@@ -1,0 +1,125 @@
+.equipped-items {
+    min-height: 600px;
+    position: relative;
+}
+
+.equipped-items .item {
+    background: #000;
+    box-shadow: 0 0 9px rgba(0,0,0,0.09), 0 2px 5px rgba(0,0,0,0.5);
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+/* Helm location */
+.item.location-1 {
+    background: url("./assets/helm.png") no-repeat;
+    position: absolute;
+    top: 0px;
+    left: 172px;
+    width: 56px;
+    height: 56px;
+    border-radius: 3px;
+}
+
+/* Amulet location */
+.item.location-2 {
+    position: absolute;
+    top: 28px;
+    left: 240px;
+    width: 28px;
+    height: 28px;
+}
+
+/* Chest location */
+.item.location-3 {
+    background: url("./assets/chest.png") no-repeat;
+    position: absolute;
+    top: 70px;
+    left: 172px;
+    width: 56px;
+    height: 84px;
+}
+
+/* Left hand weapon location */
+.item.location-4 {
+    position: absolute;
+    top: 39px;
+    left: 59px;
+    width: 59px;
+    height: 116px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Right hand weapon location */
+.item.location-5 {
+    position: absolute;
+    top: 39px;
+    left: 287px;
+    width: 59px;
+    height: 116px;
+}
+
+/* Left ring location */
+.item.location-6 {
+    position: absolute;
+    top: 171px;
+    left: 127px;
+    width: 28px;
+    height: 28px;
+}
+
+/* Right ring location */
+.item.location-7 {
+    position: absolute;
+    top: 171px;
+    left: 245px;
+    width: 28px;
+    height: 28px;
+}
+
+/* Belt location */
+.item.location-8 {
+    position: absolute;
+    top: 171px;
+    left: 169px;
+    width: 62px;
+    height: 33px;
+}
+
+/* Boots location */
+.item.location-9 {
+    position: absolute;
+    top: 171px;
+    left: 287px;
+    width: 56px;
+    height: 56px;
+}
+
+/* Gloves location */
+.item.location-10 {
+    position: absolute;
+    top: 171px;
+    left: 59px;
+    width: 56px;
+    height: 56px;
+}
+
+/* Alternative left hand weapon location */
+.item.location-11 {
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 20px;
+    width: 80px;
+    height: 170px;
+}
+
+/* Alterntive right hand weapon location */
+.item.location-12 {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    width: 80px;
+    height: 170px;
+}

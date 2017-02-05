@@ -1,0 +1,124 @@
+.item {
+    cursor: pointer;
+    position: relative;
+}
+
+.item .item-image {
+    max-width: 59px;
+    max-height: 116px;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+}
+
+.item .item-image img {
+    position: relative;
+}
+
+.item .helper {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Socketed items */
+.item .socketed-items {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.item .socketed-item {
+    float: left;
+}
+
+.item .socketed-items.sockets-1, .item .socketed-items.sockets-2, .item .socketed-items.sockets-3 {
+    max-width: 28px;
+}
+
+.item .socketed-items.sockets-1 {
+    top: 25%;
+}
+
+.item .socketed-items.sockets-2 {
+    top: 12.5%;
+}
+
+.item .socketed-items.sockets-2 {
+    height: 56px;
+}
+
+.item .socketed-items.sockets-3 {
+    height: 84px;
+}
+
+.item .socketed-items.sockets-4 {
+    height: 112px;
+    max-width: 56px;
+}
+
+.item .socketed-items.sockets-5 {
+    height: 140px;
+    max-width: 28px;
+}
+
+.item .socketed-items.sockets-6 {
+    height: 84px;
+    max-width: 56px;
+}
+
+.item .socketed-items.sockets-4 {
+    max-width: 28px;
+}
+
+.item .socketed-items.sockets-5 {
+    max-width: 28px;
+    left: 25%;
+}
+
+.item .socketed-items.sockets-6 {
+    max-width: 56px;
+    left: 12.5%;
+}
+
+/* Quality colors */
+
+/* Tooltip */
+.item-tooltip h3 {
+    font-size: 15px;
+    margin: 0px;
+    line-height: 18px;
+}
+
+/* Quality colors */
+.item-tooltip h3.type-1 {
+    color: #c2c2c2;
+}
+
+.item-tooltip h3.type-2 {
+    color: #c2c2c2;
+}
+
+.item-tooltip h3.type-3 {
+    color: #c2c2c2;
+}
+
+.item-tooltip h3.type-4 {
+    color: #5050ab;
+}
+
+.item-tooltip h3.type-5 {
+    color: #19fa00;
+}
+
+.item-tooltip h3.type-7, .item-tooltip h3.type-runeword {
+    color: #948065;
+}
+
+.item-tooltip p {
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 16px;
+    color: #c2c2c2;
+}

@@ -1,0 +1,21 @@
+.broadcast {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+}
+
+.broadcast-text {
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.mdl-spinner {
+    width: 60px;
+    height: 60px;
+}
+
+.character-sheet {
+    width: 800px;
+    margin: 200px auto;
+}

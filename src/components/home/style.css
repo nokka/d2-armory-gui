@@ -1,0 +1,19 @@
+.home {
+    width: 400px;
+    margin: 20% auto;
+}
+
+.home .mdl-textfield__expandable-holder, .home .mdl-textfield--expandable {
+    width: 400px;
+}
+
+@media (max-width: 480px) {
+
+    .home {
+        width: 190px;
+    }
+
+    .home h1 {
+        font-size: 32px;
+    }
+}
