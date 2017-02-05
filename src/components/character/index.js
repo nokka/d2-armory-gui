@@ -5,6 +5,8 @@ import { Grid, Icon, Spinner } from 'react-mdl'
 // Components.
 import EquippedItems from './equipped-items'
 import GearBonuses from './gear-bonuses'
+import Attributes from './attributes'
+import Skills from './skills'
 
 import './style.css'
 
@@ -98,6 +100,8 @@ export default class Ladder extends React.Component {
             <Grid className="character-sheet">
                 <GearBonuses/>
                 <EquippedItems data={this.state.items.equipped}/>
+                <Attributes data={this.state.attributes}/>
+                <Skills data={this.state.skills}/>
             </Grid>
         );
     }

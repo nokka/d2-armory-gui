@@ -1,0 +1,28 @@
+.attributes ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 1px solid #000;
+    padding: 7px 0 8px;
+}
+
+.attributes li {
+    display: block;
+    height: 26px;
+}
+
+.attributes span {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+}
+
+.attribute-label {
+    float: left;
+    width: 50%;
+}
+.attribute-value {
+    float: right;
+    text-align: right;
+    width: 50%;
+}
