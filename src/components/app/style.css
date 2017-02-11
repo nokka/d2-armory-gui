@@ -12,3 +12,28 @@ body {
     width: 300px;
     max-width: 300px;
 }
+
+h1 {
+    font-size: 23px;
+    color: #FFEAD4;
+}
+
+h1.char-name {
+    margin: 0px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 19px;
+    line-height: 19px;
+    color: #a99877;
+}
+
+h2.char-class {
+    margin: 0px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 16px;
+}

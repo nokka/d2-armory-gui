@@ -15,7 +15,9 @@
     height: 60px;
 }
 
-.character-sheet {
-    width: 800px;
-    margin: 200px auto;
+@media (min-width: 800px) {
+    .character-sheet {
+        width: 800px;
+        margin: 50px auto;
+    }
 }

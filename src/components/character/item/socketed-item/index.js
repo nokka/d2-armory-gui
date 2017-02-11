@@ -7,7 +7,8 @@ export default class SocketedItem extends React.Component {
         super(props);
 
         this.state = {
-            item: props.data
+            item: props.data.item,
+            position: props.data.position
         };
     }
 
@@ -25,8 +26,8 @@ export default class SocketedItem extends React.Component {
     render() {
         let itemImage = this.getItemImage();
         return (
-            <div className="socketed-item">
-                <img src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.gif`} role="presentation" />
+            <div className={`socketed-item socketed-position-${this.state.position}`}>
+                <img src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.png`} role="presentation" />
             </div>
         );
     }

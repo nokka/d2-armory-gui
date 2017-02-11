@@ -20,10 +20,12 @@ export default class EquippedItems extends React.Component {
 
     render() {
         return (
-            <Cell className="equipped-items" col={6} phone={12}>
+            <Cell col={6} tablet={12} phone={12}>
+                <div className="equipped-items">
                 { this.state.items.map((item) =>
                     <Item key={(item.id)} data={item} />
                 )}
+                </div>
             </Cell>
         );
     }

@@ -26,3 +26,31 @@
     text-align: right;
     width: 50%;
 }
+
+/* Globes */
+.globe {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.globe span {
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+
+}
+
+.globe.health {
+    background: #5c0000;
+}
+
+.globe.mana {
+    background: #000057;
+}

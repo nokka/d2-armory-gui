@@ -1,6 +1,8 @@
 .equipped-items {
-    min-height: 350px;
+    max-width: 400px;
+    min-height: 250px;
     position: relative;
+    margin: 0px auto;
 }
 
 .equipped-items .item {
@@ -109,17 +111,18 @@
 .item.location-11 {
     display: none;
     position: absolute;
-    top: 90px;
-    left: 20px;
-    width: 80px;
-    height: 170px;
+    top: 39px;
+    left: 59px;
+    width: 59px;
+    height: 116px;
 }
 
 /* Alterntive right hand weapon location */
 .item.location-12 {
+
     position: absolute;
-    top: 90px;
-    right: 20px;
-    width: 80px;
-    height: 170px;
+    top: 39px;
+    left: 287px;
+    width: 59px;
+    height: 116px;
 }

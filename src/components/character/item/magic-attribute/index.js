@@ -1,6 +1,8 @@
 import React from 'react'
 import './style.css'
 
+import Normalizer from './attribute-normalizer'
+
 export default class MagicAttribute extends React.Component {
 
     constructor(props) {
@@ -12,6 +14,9 @@ export default class MagicAttribute extends React.Component {
     }
 
     renderValues() {
+
+        Normalizer.normalize(this.state.property);
+
         let rendered = this.state.property.name;
         this.state.property.values.map(function(value, i) {
             return rendered = rendered.replace(`{${i}}`, value);

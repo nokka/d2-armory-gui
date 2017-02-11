@@ -2,19 +2,13 @@ import React from 'react'
 import { Tooltip } from 'react-mdl'
 import './style.css'
 
+// Constants.
+import Quality from './quality'
+
+// Components.
 import MagicAttribute from './magic-attribute'
 import SocketedItem from './socketed-item'
-
-const quality = {
-    lowQuality: 1,
-    normal: 2,
-    highQuality: 3,
-    magicallyEnhanced: 4,
-    set: 5,
-    rare: 6,
-    unique: 7,
-    crafted: 8
-};
+import Merger from './attribute-merger'
 
 export default class Item extends React.Component {
 
@@ -28,22 +22,24 @@ export default class Item extends React.Component {
 
     getTitle() {
         let prefix = null;
-
         let magic_prefix = null;
         let magic_suffix = null;
-
         let prefixClass = null;
 
         switch (this.state.item.quality) {
-            case quality.magicallyEnhanced:
+            case Quality.magicallyEnhanced:
                 magic_prefix = this.state.item.magic_prefix;
                 magic_suffix = this.state.item.magic_suffix;
                 break;
-            case quality.set:
+            case Quality.set:
                 prefix = this.state.item.set_name;
                 break;
-            case quality.unique:
+            case Quality.unique:
                 prefix = this.state.item.unique_name;
+                break;
+            case Quality.rare:
+            case Quality.crafted:
+                prefix = `${this.state.item.rare_name} ${this.state.item.rare_name2}`;
                 break;
             default:
                 break;
@@ -61,7 +57,7 @@ export default class Item extends React.Component {
             <div>
                 <h3 className={`type-${prefixClass}`}>{prefix}</h3>
 
-                { (this.state.item.quality === quality.magicallyEnhanced) ?
+                { (this.state.item.quality === Quality.magicallyEnhanced) ?
                     <h3 className={`type-${this.state.item.quality}`}>{magic_prefix} {this.state.item.type_name} of {magic_suffix}</h3>
                     :
                     <h3 className={`type-${this.state.item.quality}`}>{this.state.item.type_name}</h3>
@@ -95,6 +91,37 @@ export default class Item extends React.Component {
         );
     }
 
+    getMagicAttributes() {
+
+        var attributes = [];
+
+        if(this.state.item.magic_attributes !== null) {
+            Merger.merge(attributes, this.state.item.magic_attributes);
+        }
+
+        if(this.state.item.runeword_attributes !== null) {
+            Merger.merge(attributes, this.state.item.runeword_attributes);
+        }
+
+        if(this.state.item.socketed_items !== null) {
+            for(var i = 0; i < this.state.item.socketed_items.length; i++) {
+                Merger.merge(attributes, this.state.item.socketed_items[i].magic_attributes);
+            }
+        }
+
+        return (
+            <div>
+            { (attributes.length > 0) ?
+                attributes.map((props, i) =>
+                    <MagicAttribute key={`${this.state.item.id}-socketed-${props.id}-${i}`} data={props}/>
+                )
+                :
+                null
+            }
+            </div>
+        );
+    }
+
     getNrOfSockets() {
         var socketed = null;
         if(this.state.item.socketed === 1) {
@@ -104,6 +131,19 @@ export default class Item extends React.Component {
         return (
             <div>
                 <p className="magic-property">{socketed}</p>
+            </div>
+        );
+    }
+
+    getEthereal() {
+        var ethereal = null;
+        if(this.state.item.ethereal === 1) {
+            ethereal = "Ethereal (Cannot be repaired)";
+        }
+
+        return (
+            <div>
+                <p className="magic-property">{ethereal}</p>
             </div>
         );
     }
@@ -123,30 +163,17 @@ export default class Item extends React.Component {
 
         var title = this.getTitle();
         var standardAttributes = this.getStandardAttributes();
+        var magicAttributes = this.getMagicAttributes();
         var nrOfSockets = this.getNrOfSockets();
+        var ethereal = this.getEthereal();
 
         return (
             <div>
                 {title}
                 {standardAttributes}
-
-                { (this.state.item.magic_attributes !== null) ?
-                    this.state.item.magic_attributes.map((props) =>
-                        <MagicAttribute key={`${this.state.item.id}-magic-${props.id}`} data={props}/>
-                    )
-                    :
-                    null
-                }
-
-                { (this.state.item.runeword_attributes !== null) ?
-                    this.state.item.runeword_attributes.map((props) =>
-                        <MagicAttribute key={`${this.state.item.id}-runeword-${props.id}`} data={props}/>
-                    )
-                    :
-                    null
-                }
-
+                {magicAttributes}
                 {nrOfSockets}
+                {ethereal}
             </div>
         );
     }
@@ -154,7 +181,6 @@ export default class Item extends React.Component {
     render() {
         let item = this.state.item;
         let tooltip = this.renderTooltip();
-
 
         let equippedName = null;
         // If the item is equipped, we'll add the id to the class names.
@@ -168,13 +194,12 @@ export default class Item extends React.Component {
             <Tooltip position="left" className="item-tooltip" label={tooltip}>
                 <div className={`item ${equippedName} quality-${item.quality}`}>
                     <span className="helper"></span>
-                    <div className="item-image">
-                        <img src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.gif`} role="presentation"/>
-
+                    <div className={`item-image`}>
+                        <img className={`ethereal-${item.ethereal}`} src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.png`} role="presentation"/>
                         { (item.nr_of_items_in_sockets > 0) ?
                                 <div className={`socketed-items sockets-${item.nr_of_items_in_sockets}`}>
                                 {item.socketed_items.map((socketedItem, i) =>
-                                    <SocketedItem key={`${item.id}_${i}}`} data={socketedItem}/>
+                                    <SocketedItem key={`${item.id}_${i}}`} data={{item: socketedItem, position: i}}/>
                                 )}
                                 </div>
                             :

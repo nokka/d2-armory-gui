@@ -18,8 +18,10 @@ export default class Attributes extends React.Component {
 
     render() {
         return (
-            <Cell className="attributes" col={4} phone={12}>
+            <Cell className="attributes" col={4} tablet={12} phone={12}>
                 <h3>Attributes</h3>
+                <div className="health globe"><span>{this.state.attributes.max_hp}</span></div>
+                <div className="mana globe"><span>{this.state.attributes.max_mana}</span></div>
                 <ul>
                     <li><span className="attribute-label">Strength</span><span className="attribute-value">{this.state.attributes.strength}</span></li>
                     <li><span className="attribute-label">Dexterity</span><span className="attribute-value">{this.state.attributes.dexterity}</span></li>
