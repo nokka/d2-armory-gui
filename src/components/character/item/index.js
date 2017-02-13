@@ -28,8 +28,8 @@ export default class Item extends React.Component {
 
         switch (this.state.item.quality) {
             case Quality.magicallyEnhanced:
-                magic_prefix = this.state.item.magic_prefix;
-                magic_suffix = this.state.item.magic_suffix;
+                magic_prefix = this.state.item.magic_prefix_name;
+                magic_suffix = this.state.item.magic_suffix_name;
                 break;
             case Quality.set:
                 prefix = this.state.item.set_name;
@@ -55,6 +55,11 @@ export default class Item extends React.Component {
 
         return (
             <div>
+                { (this.state.item.personalized === 1) ?
+                    <h3 className={`type-${this.state.item.quality}`}>{this.state.item.personalized_name}'s</h3>
+                    :
+                    null
+                }
                 <h3 className={`type-${prefixClass}`}>{prefix}</h3>
 
                 { (this.state.item.quality === Quality.magicallyEnhanced) ?
@@ -153,6 +158,15 @@ export default class Item extends React.Component {
         if(this.state.item.multiple_pictures === 1) {
             itemImage = this.state.item.type + "_" + this.state.item.picture_id;
         } else {
+            /*if(this.state.item.quality === Quality.unique) {
+                itemImage = `${this.state.item.type}_u${this.state.item.unique_id}`;
+            }
+            else if(this.state.item.quality === Quality.set) {
+                itemImage = `${this.state.item.type}_s${this.state.item.set_id}`;
+            }
+            else {
+                itemImage = this.state.item.type;
+            }*/
             itemImage = this.state.item.type;
         }
 

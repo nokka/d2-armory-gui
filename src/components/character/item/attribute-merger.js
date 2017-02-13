@@ -20,7 +20,7 @@ module.exports = {
                             var maxToAdd = parseInt((list[i].values[1] * list[i].values[2])/256, 10);
 
                             attributes[index].values[0] += minToAdd;
-                            var maxValue = attributes[index].values[1] += maxToAdd;
+                            attributes[index].values[1] += maxToAdd;
                             //property.values[2] /= 25;
                         }
 

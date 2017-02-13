@@ -7,6 +7,8 @@ import Locations from './item-locations'
 
 // Components.
 import EquippedItems from './equipped-items'
+import Merc from './merc'
+import IronGolem from './iron-golem'
 import GearBonuses from './gear-bonuses'
 import Attributes from './attributes'
 import Skills from './skills'
@@ -20,9 +22,11 @@ export default class Ladder extends React.Component {
         attributes: null,
         skills: null,
         items: null,
-        mercItems: null,
-        lastParsed: null,
-        errorOccurred: false
+        merc_items: null,
+        golem_item: null,
+        is_dead: null,
+        last_parsed: null,
+        error_occurred: false
     }
 
     componentDidMount() {
@@ -80,6 +84,8 @@ export default class Ladder extends React.Component {
                         default:
                             break;
                     }
+
+                    return true;
                 });
 
 
@@ -97,27 +103,30 @@ export default class Ladder extends React.Component {
                     attributes: response.character.d2s.attributes,
                     skills: response.character.d2s.skills,
                     items: items,
-                    lastParsed: response.character.last_parsed,
-                    errorOccurred: false
+                    merc_items: response.character.d2s.merc_items,
+                    golem_item: response.character.d2s.golem_item,
+                    is_dead: response.character.d2s.is_dead,
+                    last_parsed: response.character.last_parsed,
+                    error_occurred: false
                 });
             }
             else {
                 this.setState({
-                    errorOccurred: false
+                    error_occurred: false
                 });
             }
 
         })
         .catch((e) => {
             this.setState({
-                errorOccurred: true
+                error_occurred: true
             });
         });
     }
 
     render() {
 
-        if(this.state.errorOccurred) {
+        if(this.state.error_occurred) {
             return (
                 <div className="broadcast">
                     <Icon name="power" />
@@ -126,11 +135,19 @@ export default class Ladder extends React.Component {
             );
         }
 
-        if(!this.state.lastParsed) {
+        if(!this.state.last_parsed) {
             return (
                 <div className="broadcast">
                     <Spinner />
                     <h1 className="broadcast-text">Distorting the space time continuum.</h1>
+                </div>
+            );
+        }
+
+        if(this.state.is_dead === 1) {
+            return (
+                <div className="broadcast">
+                    <h1 className="broadcast-text">Dead af.</h1>
                 </div>
             );
         }
@@ -144,10 +161,12 @@ export default class Ladder extends React.Component {
                     <h2 className="char-class">{this.state.header.level} {this.state.header.class}</h2>
                     <h1 className="char-name">{this.state.header.name}</h1>
                 </Cell>
-                <GearBonuses data={this.state.items.equipped}/>
+                <GearBonuses data={{equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
                 <EquippedItems data={this.state.items.equipped}/>
-                <Attributes data={this.state.attributes}/>
+                <Attributes data={{class: this.state.header.class, attributes: this.state.attributes, equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
                 <Skills data={this.state.skills}/>
+                <Merc data={this.state.merc_items}/>
+                <IronGolem data={this.state.golem_item}/>
             </Grid>
         );
     }

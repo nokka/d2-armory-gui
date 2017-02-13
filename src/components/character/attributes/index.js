@@ -2,6 +2,9 @@ import React from 'react'
 import { Cell } from 'react-mdl'
 import './style.css'
 
+// Components.
+import Calculator from './attributes-calculator'
+
 export default class Attributes extends React.Component {
 
     state = {
@@ -11,9 +14,79 @@ export default class Attributes extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            attributes: props.data
+        var extraAttributes = {
+                strength: 0,
+                energy: 0,
+                dexterity: 0,
+                vitality: 0,
+                max_hp: 0,
+                max_mana: 0
         };
+
+        if(props.data.equipped.length > 0) {
+            props.data.equipped.map(function(item) {
+                // Ignoring swap weapons by only counting items with equipped id
+                // below or equal to 10.
+                if(item.equipped_id <=  10) {
+                    if(item.magic_attributes !== null) {
+                        Calculator.calculate(extraAttributes, item.magic_attributes);
+                    }
+
+                    if(item.runeword_attributes !== null) {
+                        Calculator.calculate(extraAttributes, item.runeword_attributes);
+                    }
+
+                    if(item.socketed_items !== null) {
+                        for(var i = 0; i < item.socketed_items.length; i++) {
+                            Calculator.calculate(extraAttributes, item.socketed_items[i].magic_attributes);
+                        }
+                    }
+                }
+                return true;
+            });
+        }
+
+        if(props.data.inventory.length > 0) {
+            props.data.inventory.map(function(item) {
+                // Ok, let's make sure we only count charms.
+                if(item.type === "cm1" || item.type === "cm2" || item.type === "cm3") {
+                    Calculator.calculate(extraAttributes, item.magic_attributes);
+                }
+                return true;
+            });
+        }
+
+        // Ok so we got the extra attributes, if vitality or energy is added
+        // we'll count it onto the hp and mana attributes.
+        if(extraAttributes.vitality > 0) {
+            props.data.attributes.max_hp += Calculator.lifePerVitality[props.data.class]*extraAttributes.vitality;
+        }
+
+        if(extraAttributes.energy > 0) {
+            props.data.attributes.max_mana += Calculator.manaPerEnergy[props.data.class]*extraAttributes.energy;
+        }
+
+        if(extraAttributes.max_hp > 0) {
+            props.data.attributes.max_hp += extraAttributes.max_hp;
+        }
+
+        if(extraAttributes.max_mana > 0) {
+            props.data.attributes.max_mana += extraAttributes.max_mana;
+        }
+
+        // Add it up.
+        props.data.attributes.strength += extraAttributes.strength;
+        props.data.attributes.energy += extraAttributes.energy;
+        props.data.attributes.dexterity += extraAttributes.dexterity;
+        props.data.attributes.vitality += extraAttributes.vitality;
+
+        this.state = {
+            attributes: props.data.attributes
+        };
+    }
+
+    toLocaleString(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     render() {
@@ -29,9 +102,9 @@ export default class Attributes extends React.Component {
                     <li><span className="attribute-label">Energy</span><span className="attribute-value">{this.state.attributes.energy}</span></li>
                 </ul>
                 <ul>
-                    <li><span className="attribute-label">Experience</span><span className="attribute-value">{this.state.attributes.experience}</span></li>
-                    <li><span className="attribute-label">Gold</span><span className="attribute-value">{this.state.attributes.gold}</span></li>
-                    <li><span className="attribute-label">Stashed gold</span><span className="attribute-value">{this.state.attributes.stashed_gold}</span></li>
+                    <li><span className="attribute-label">Experience</span><span className="attribute-value">{this.toLocaleString(this.state.attributes.experience)}</span></li>
+                    <li><span className="attribute-label">Gold</span><span className="attribute-value">{this.toLocaleString(this.state.attributes.gold)}</span></li>
+                    <li><span className="attribute-label">Stashed gold</span><span className="attribute-value">{this.toLocaleString(this.state.attributes.stashed_gold)}</span></li>
                     <li><span className="attribute-label">Unused skill points</span><span className="attribute-value">{this.state.attributes.unused_skill_points}</span></li>
                     <li><span className="attribute-label">Unused attributes</span><span className="attribute-value">{this.state.attributes.unused_stats}</span></li>
                 </ul>

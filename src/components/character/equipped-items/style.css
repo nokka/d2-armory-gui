@@ -119,7 +119,7 @@
 
 /* Alterntive right hand weapon location */
 .item.location-12 {
-
+    display: none;
     position: absolute;
     top: 39px;
     left: 287px;
