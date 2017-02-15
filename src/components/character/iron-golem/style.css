@@ -1,6 +1,10 @@
+.iron-golem {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
 .golem-inner {
     padding: 0px 15px 0px 15px;
-    background-color: rgba(0,0,0,0.3);
 }
 
 .golem-bonuses {
@@ -28,7 +32,15 @@
 }
 
 .golem-bonuses li {
+    padding-left: 20px;
+    position: relative;
     color: #a99fff;
+}
+
+.golem-bonuses li::before {
+    position: absolute;
+    left: 0px;
+    font-family: "Material Icons"
 }
 
 .golem-bonuses .bonus-value {

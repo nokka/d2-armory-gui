@@ -58,42 +58,42 @@ export default class MercItems extends React.Component {
                     <h3 className="underlined">Gear bonuses</h3>
                     <ul>
                     { (this.state.bonuses.fcr > 0) ?
-                        <li>Faster cast rate: <span className="bonus-value">{this.state.bonuses.fcr}%</span></li>
+                        <li className="fcr">Faster cast rate: <span className="bonus-value">{this.state.bonuses.fcr}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.fhr > 0) ?
-                        <li>Faster hit recovery: <span className="bonus-value">{this.state.bonuses.fhr}%</span></li>
+                        <li className="fhr">Faster hit recovery: <span className="bonus-value">{this.state.bonuses.fhr}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.ias > 0) ?
-                        <li>Increased attack speed: <span className="bonus-value">{this.state.bonuses.ias}%</span></li>
+                        <li  className="ias">Increased attack speed: <span className="bonus-value">{this.state.bonuses.ias}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.frw > 0) ?
-                        <li>Faster run/walk: <span className="bonus-value">{this.state.bonuses.frw}%</span></li>
+                        <li className="frw">Faster run/walk: <span className="bonus-value">{this.state.bonuses.frw}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.dr > 0) ?
-                        <li>Damage reduction: <span className="bonus-value">{this.state.bonuses.dr}%</span></li>
+                        <li className="dr">Damage reduction: <span className="bonus-value">{this.state.bonuses.dr}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.mf > 0) ?
-                        <li>Better chance of getting magic items: <span className="bonus-value">{this.state.bonuses.mf}%</span></li>
+                        <li className="mf">Better chance of getting magic items: <span className="bonus-value">{this.state.bonuses.mf}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.cb > 0) ?
-                        <li>Crushing blow: <span className="bonus-value">{this.state.bonuses.cb}%</span></li>
+                        <li className="cb">Crushing blow: <span className="bonus-value">{this.state.bonuses.cb}%</span></li>
                         :
                         null
                     }
                     { (this.state.bonuses.ds > 0) ?
-                        <li>Deadly strike: <span className="bonus-value">{this.state.bonuses.ds}%</span></li>
+                        <li className="ds">Deadly strike: <span className="bonus-value">{this.state.bonuses.ds}%</span></li>
                         :
                         null
                     }

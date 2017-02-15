@@ -1,11 +1,14 @@
+.merc {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
 .merc-inner {
     padding: 0px 15px 0px 15px;
-    background-color: rgba(0,0,0,0.3);
 }
 
 .merc-bonuses {
     width: 45%;
-    padding-left: 25px;
     min-height: 250px;
     float: left;
 }
@@ -28,7 +31,15 @@
 }
 
 .merc-bonuses li {
+    padding-left: 20px;
+    position: relative;
     color: #a99fff;
+}
+
+.merc-bonuses li::before {
+    position: absolute;
+    left: 0px;
+    font-family: "Material Icons"
 }
 
 .merc-bonuses .bonus-value {

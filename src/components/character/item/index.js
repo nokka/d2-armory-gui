@@ -160,14 +160,14 @@ export default class Item extends React.Component {
         } else {
             /*if(this.state.item.quality === Quality.unique) {
                 itemImage = `${this.state.item.type}_u${this.state.item.unique_id}`;
-            }
-            else if(this.state.item.quality === Quality.set) {
-                itemImage = `${this.state.item.type}_s${this.state.item.set_id}`;
+            }*/
+
+            if(this.state.item.quality === Quality.set) {
+                itemImage = `s${this.state.item.set_id}`;
             }
             else {
                 itemImage = this.state.item.type;
-            }*/
-            itemImage = this.state.item.type;
+            }
         }
 
         return itemImage;

@@ -50,8 +50,7 @@
 }
 
 .profile-low, .merc, .iron-golem {
-    /*background: #0f0e0b;*/
-    background: rgba(0,0,0, 0.8);
+    background: rgba(0,0,0, 0.7);
 }
 
 .broadcast {
@@ -69,6 +68,38 @@
 .mdl-spinner {
     width: 60px;
     height: 60px;
+}
+
+li.fcr::before {
+    content: "\E923";
+}
+
+li.fhr::before {
+    content: "\E422";
+}
+
+li.ias::before {
+    content: "\E863";
+}
+
+li.frw::before {
+    content: "\E566";
+}
+
+li.mf::before {
+    content: "\E420";
+}
+
+li.cb::before {
+    content: "\E90E";
+}
+
+li.ds::before {
+    content: "\E55C";
+}
+
+li.dr::before {
+    content: "\E32A";
 }
 
 @media (min-width: 900px) {

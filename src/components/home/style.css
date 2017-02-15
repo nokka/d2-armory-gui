@@ -1,19 +1,48 @@
 .home {
     width: 400px;
-    margin: 20% auto;
+    height: 220px;
+    margin: 10% auto;
+    padding: 15px 50px 50px 50px;
+    background: rgba(0,0,0, 0.5);
 }
 
-.home .mdl-textfield__expandable-holder, .home .mdl-textfield--expandable {
-    width: 400px;
+.home h1 {
+    margin: 10px 0px 15px 0px;
+}
+.home .searcher {
+    position: relative;
+    width: 100%;
+    height: 55px;
+    background: #000;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+}
+
+.searcher input {
+    font-size: 15px;
+    height: 55px;
+    background: none;
+    border: none;
+    width: 90%;
+    color: #FFEAD4;
+    padding: 0px 0px 0px 45px;
+}
+
+.searcher::before {
+    font-family: "Material Icons";
+    font-size: 23px;
+    content: "\E8B6";
+    color: #fff;
+    position: absolute;
+    top: 19px;
+    left: 12px;
+}
+
+.home button {
+    margin-top: 10px;
 }
 
 @media (max-width: 480px) {
-
-    .home {
-        width: 190px;
-    }
-
-    .home h1 {
-        font-size: 32px;
-    }
 }

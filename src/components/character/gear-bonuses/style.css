@@ -24,38 +24,6 @@
     font-family: "Material Icons"
 }
 
-li.fcr::before {
-    content: "\E923";
-}
-
-li.fhr::before {
-    content: "\E422";
-}
-
-li.ias::before {
-    content: "\E863";
-}
-
-li.frw::before {
-    content: "\E566";
-}
-
-li.mf::before {
-    content: "\E420";
-}
-
-li.cb::before {
-    content: "\E90E";
-}
-
-li.ds::before {
-    content: "\E55C";
-}
-
-li.dr::before {
-    content: "\E32A";
-}
-
 .gear-bonuses .bonus-value {
     color: #d0ccff;
 }

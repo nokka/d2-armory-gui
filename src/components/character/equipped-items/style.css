@@ -7,9 +7,9 @@
 
 .item {
     background: #000;
-    -moz-box-shadow:    inset 0 0 10px #474747;
-    -webkit-box-shadow: inset 0 0 10px #474747;
-    box-shadow:         inset 0 0 10px #474747;
+    -moz-box-shadow:    inset 0 0 10px #2B2B2B;
+    -webkit-box-shadow: inset 0 0 10px #2B2B2B;
+    box-shadow:         inset 0 0 10px #2B2B2B;
     border: 1px solid black;
     border-radius: 4px;
 }
@@ -55,6 +55,7 @@
 
 /* Amulet location */
 .item.location-2 {
+    background: url("./assets/inv_ring_amulet.png") no-repeat;
     position: absolute;
     top: 28px;
     left: 240px;
@@ -64,7 +65,7 @@
 
 /* Chest location */
 .item.location-3 {
-    background: url("./assets/chest.png") no-repeat;
+    background: url("./assets/inv_armor.png") no-repeat;
     position: absolute;
     top: 70px;
     left: 172px;
@@ -74,6 +75,7 @@
 
 /* Left hand weapon location */
 .item.location-4 {
+    background: url("./assets/inv_weapons.png") no-repeat;
     position: absolute;
     top: 39px;
     left: 59px;
@@ -85,6 +87,7 @@
 
 /* Right hand weapon location */
 .item.location-5 {
+    background: url("./assets/inv_weapons.png") no-repeat;
     position: absolute;
     top: 39px;
     left: 287px;
@@ -94,6 +97,7 @@
 
 /* Left ring location */
 .item.location-6 {
+    background: url("./assets/ring.png") no-repeat;
     position: absolute;
     top: 171px;
     left: 127px;
@@ -103,6 +107,7 @@
 
 /* Right ring location */
 .item.location-7 {
+    background: url("./assets/ring.png") no-repeat;
     position: absolute;
     top: 171px;
     left: 245px;
@@ -112,6 +117,7 @@
 
 /* Belt location */
 .item.location-8 {
+    background: url("./assets/inv_belt.png") no-repeat;
     position: absolute;
     top: 171px;
     left: 169px;
@@ -121,6 +127,7 @@
 
 /* Boots location */
 .item.location-9 {
+    background: url("./assets/inv_boots.png") no-repeat;
     position: absolute;
     top: 171px;
     left: 287px;
@@ -130,6 +137,7 @@
 
 /* Gloves location */
 .item.location-10 {
+    background: url("./assets/inv_helm_glove.png") no-repeat;
     position: absolute;
     top: 171px;
     left: 59px;
@@ -139,6 +147,7 @@
 
 /* Alternative left hand weapon location */
 .item.location-11 {
+    background: url("./assets/inv_weapons.png") no-repeat;
     display: none;
     position: absolute;
     top: 39px;
@@ -149,6 +158,7 @@
 
 /* Alterntive right hand weapon location */
 .item.location-12 {
+    background: url("./assets/inv_weapons.png") no-repeat;
     display: none;
     position: absolute;
     top: 39px;

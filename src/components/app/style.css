@@ -1,12 +1,30 @@
 html, body {height: 100%;}
 body {
-    /*background: url("assets/bg-repeat.jpg");*/
-    background: #0a1a1a url("assets/bg.jpg") 50% 0 no-repeat;
+    background: url("assets/bg-repeat.jpg");
     color: #FFEAD4;
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
     text-shadow: 1px 1px 0 #000;
+}
+
+.app {
+    background: url("assets/bg.jpg") 50% 0 no-repeat;
+    -webkit-background-size: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 1920px) {
+    .app {
+        background-image: url("assets/bg-1920.jpg");
+    }
+}
+
+@media (max-width: 1680px) {
+    .app {
+        background-image: url("assets/bg-1680.jpg");
+    }
 }
 
 .mdl-tooltip {
