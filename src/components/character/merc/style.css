@@ -1,6 +1,45 @@
-.merc-items {
-    max-width: 400px;
+.merc-inner {
+    padding: 0px 15px 0px 15px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.merc-bonuses {
+    width: 45%;
+    padding-left: 25px;
     min-height: 250px;
+    float: left;
+}
+.merc-items {
+    width: 45%;
+    min-height: 250px;
+    float: right;
     position: relative;
-    margin: 0px auto;
+}
+
+.merc-items .char-name {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.merc-bonuses ul {
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    list-style-type: none;
+}
+
+.merc-bonuses li {
+    color: #a99fff;
+}
+
+.merc-bonuses .bonus-value {
+    color: #d0ccff;
+}
+
+@media (max-width: 900px) {
+    .merc-bonuses {
+        width: 100%;
+    }
+    .merc-items {
+        width: 100%;
+    }
 }

@@ -1,8 +1,14 @@
+.attributes {
+    padding: 0px 15px 0px 15px;
+    background-color: rgba(0,0,0,0.3);
+}
+
 .attributes ul {
+    font-size: 12px;
     list-style-type: none;
     margin: 0px;
     padding: 0px;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #312a1e;
     padding: 7px 0 8px;
 }
 
@@ -11,46 +17,68 @@
     height: 26px;
 }
 
-.attributes span {
+.attribute-list span {
     display: block;
     height: 26px;
     line-height: 26px;
 }
 
 .attribute-label {
+    color: #a99877;
     float: left;
     width: 50%;
 }
 .attribute-value {
+    color: #f3e6d0;
     float: right;
     text-align: right;
     width: 50%;
 }
 
-/* Globes */
-.globe {
-    display: inline-block;
-    position: relative;
-    border-radius: 50%;
-    width: 75px;
-    height: 75px;
-    text-align: center;
+/* Resources */
+.attributes ul.resources {
+    height: 50px;
+    padding-bottom: 25px;
+}
+
+.resource-label {
+    display: table-cell;
+    height: 50px;
+    width: 50px;
+    padding-left: 8px;
+    text-transform: uppercase;
     vertical-align: middle;
 }
 
-.globe span {
-    position: absolute;
-    top: 25px;
-    left: 0px;
-    right: 0px;
-    text-align: center;
+.resources li {
+    display: block;
+    height: 50px;
+    width: 50%;
+    float: left;
+}
 
+.globe {
+    display: table-cell;
+    position: relative;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #0a0807;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+}
+
+.globe span {
+    text-align: center;
 }
 
 .globe.health {
-    background: #5c0000;
+    background: #9c0e06;
 }
 
 .globe.mana {
-    background: #000057;
+    background: #201c91;
 }

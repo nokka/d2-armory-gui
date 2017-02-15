@@ -1,3 +1,59 @@
+.character-sheet {
+    padding-top: 0px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menu-grid {
+    margin-top: 0px;
+    padding-bottom: 15px;
+}
+
+.menu {
+    height: 50px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.menu li {
+    float: left;
+    margin-right: 15px;
+    text-align: center;
+    border-bottom: 2px solid #312a1e;
+    padding: 5px 15px 5px 15px;
+}
+
+.menu li:hover {
+    border-bottom: 2px solid #f3e6d0;
+}
+
+.menu i {
+    color: #f3e6d0;
+}
+
+.menu a {
+    height: 50px;
+    width: 50px;
+    color: #a99877;
+    text-decoration: none;
+}
+
+.menu span {
+    display: block;
+}
+
+.profile-top {
+    padding-top: 20px;
+    /*background: #0f0e0d;*/
+    background: rgba(0,0,0, 0.8);
+}
+
+.profile-low, .merc, .iron-golem {
+    /*background: #0f0e0b;*/
+    background: rgba(0,0,0, 0.8);
+}
+
 .broadcast {
     position: absolute;
     top: 25%;
@@ -16,8 +72,8 @@
 }
 
 @media (min-width: 900px) {
-    .character-sheet {
+    .character-sheet, .menu-grid {
         width: 900px;
-        margin: 50px auto;
+        margin: 0px auto 0px auto;
     }
 }

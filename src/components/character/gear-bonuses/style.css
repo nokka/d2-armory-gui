@@ -1,0 +1,61 @@
+.gear-bonuses {
+    padding-left: 25px;
+}
+
+.gear-bonuses h3 {
+    margin: 0px 0px 15px 0px;
+}
+
+.gear-bonuses ul {
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    list-style-type: none;
+}
+
+.gear-bonuses li {
+    color: #a99fff;
+    padding-left: 20px;
+    position: relative;
+}
+
+.gear-bonuses li::before {
+    position: absolute;
+    left: 0px;
+    font-family: "Material Icons"
+}
+
+li.fcr::before {
+    content: "\E923";
+}
+
+li.fhr::before {
+    content: "\E422";
+}
+
+li.ias::before {
+    content: "\E863";
+}
+
+li.frw::before {
+    content: "\E566";
+}
+
+li.mf::before {
+    content: "\E420";
+}
+
+li.cb::before {
+    content: "\E90E";
+}
+
+li.ds::before {
+    content: "\E55C";
+}
+
+li.dr::before {
+    content: "\E32A";
+}
+
+.gear-bonuses .bonus-value {
+    color: #d0ccff;
+}

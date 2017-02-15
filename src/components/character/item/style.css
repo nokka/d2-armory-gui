@@ -66,10 +66,6 @@
     top: 25%;
 }
 
-.item .socketed-items.sockets-2 {
-    top: 12.5%;
-}
-
 /* Quality colors */
 .item-tooltip h3.type-1 {
     color: #c2c2c2;
@@ -104,6 +100,11 @@
 }
 
 /* Tooltip */
+.item-tooltip h1, .item-tooltip h2, .item-tooltip h3, .item-tooltip h4, .item-tooltip h5 {
+    font-family: "Roboto", sans-serif;
+    text-transform: none;
+}
+
 .item-tooltip h3 {
     font-size: 15px;
     margin: 0px;

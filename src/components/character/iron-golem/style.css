@@ -1,6 +1,45 @@
-.iron-golem {
-    max-width: 400px;
+.golem-inner {
+    padding: 0px 15px 0px 15px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.golem-bonuses {
+    width: 45%;
+    padding-left: 25px;
     min-height: 250px;
+    float: left;
+}
+.golem-items {
+    width: 45%;
+    min-height: 250px;
+    float: right;
     position: relative;
-    margin: 0px auto;
+}
+
+.golem-items .char-name {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.golem-bonuses ul {
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    list-style-type: none;
+}
+
+.golem-bonuses li {
+    color: #a99fff;
+}
+
+.golem-bonuses .bonus-value {
+    color: #d0ccff;
+}
+
+@media (max-width: 900px) {
+    .golem-bonuses {
+        width: 100%;
+    }
+    .golem-items {
+        width: 100%;
+    }
 }

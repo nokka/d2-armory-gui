@@ -88,8 +88,6 @@ export default class Ladder extends React.Component {
                     return true;
                 });
 
-
-
                 // When you include a script in the HTML file that defines
                 // global variables and try to use one of these variables in the code,
                 // the linter will complain because it cannot see the definition of the variable.
@@ -129,8 +127,8 @@ export default class Ladder extends React.Component {
         if(this.state.error_occurred) {
             return (
                 <div className="broadcast">
-                    <Icon name="power" />
-                    <h1 className="broadcast-text">Something went terribly wrong, please try again.</h1>
+                    <Icon name="adb" />
+                    <h1 className="broadcast-text">Couldn't parse the character, missing magic attributes probably, developers have been notified.</h1>
                 </div>
             );
         }
@@ -153,21 +151,33 @@ export default class Ladder extends React.Component {
         }
 
         return (
-            <Grid className="character-sheet">
-                <Cell col={6} tablet={12} phone={12}>
-                    &nbsp;
-                </Cell>
-                <Cell col={6} tablet={12} phone={12}>
-                    <h2 className="char-class">{this.state.header.level} {this.state.header.class}</h2>
-                    <h1 className="char-name">{this.state.header.name}</h1>
-                </Cell>
-                <GearBonuses data={{equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
-                <EquippedItems data={this.state.items.equipped}/>
-                <Attributes data={{class: this.state.header.class, attributes: this.state.attributes, equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
-                <Skills data={this.state.skills}/>
-                <Merc data={this.state.merc_items}/>
-                <IronGolem data={this.state.golem_item}/>
-            </Grid>
+            <div>
+                <Grid className="menu-grid">
+                    <Cell col={12} tablet={12} phone={12}>
+                        <ul className="menu">
+                            <li><a title="Checkout the ladder" href="http://ladder.slashgaming.net"><Icon name="timeline" /><span>LADDER</span></a></li>
+                            <li><a title="Search the armory" href="/"><Icon name="search" /><span>SEARCH</span></a></li>
+                        </ul>
+                    </Cell>
+                </Grid>
+                <Grid className="character-sheet profile-top">
+                    <Cell col={6} tablet={12} phone={12}>
+                        &nbsp;
+                    </Cell>
+                    <Cell col={6} tablet={12} phone={12}>
+                        <h2 className="char-class">({this.state.header.level}) {this.state.header.class}</h2>
+                        <h1 className="char-name">{this.state.header.name}</h1>
+                    </Cell>
+                    <GearBonuses data={{equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
+                    <EquippedItems data={this.state.items.equipped}/>
+                </Grid>
+                <Grid className="character-sheet profile-low">
+                    <Attributes data={{class: this.state.header.class, attributes: this.state.attributes, equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
+                    <Skills data={this.state.skills}/>
+                </Grid>
+                {this.state.merc_items !== null && <Grid className="character-sheet merc"><Merc data={this.state.merc_items}/></Grid>}
+                {this.state.golem_item !== null && <Grid className="character-sheet iron-golem"><IronGolem data={this.state.golem_item}/></Grid>}
+            </div>
         );
     }
 }
