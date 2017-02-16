@@ -35,8 +35,7 @@ export default class Ladder extends React.Component {
     }
 
     loadCharacter() {
-        fetch(`http://localhost:8090/retrieving/v1/character?name=${this.props.params.name}`)
-      //fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
             console.log(response.status);
             if (response.status >= 400) {
