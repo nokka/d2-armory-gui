@@ -35,8 +35,10 @@ export default class Ladder extends React.Component {
     }
 
     loadCharacter() {
-      fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`http://localhost:8090/retrieving/v1/character?name=${this.props.params.name}`)
+      //fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
+            console.log(response.status);
             if (response.status >= 400) {
                 throw new Error("Something went terribly wrong");
             }
@@ -110,7 +112,7 @@ export default class Ladder extends React.Component {
             }
             else {
                 this.setState({
-                    error_occurred: false
+                    error_occurred: true
                 });
             }
 
@@ -123,7 +125,7 @@ export default class Ladder extends React.Component {
     }
 
     render() {
-
+        console.log(this.state);
         if(this.state.error_occurred) {
             return (
                 <div className="broadcast">

@@ -79,8 +79,8 @@
     position: absolute;
     top: 39px;
     left: 59px;
-    width: 59px;
-    height: 116px;
+    width: 56px;
+    height: 111px;
     white-space: nowrap;
     text-align: center;
 }
@@ -91,8 +91,8 @@
     position: absolute;
     top: 39px;
     left: 287px;
-    width: 59px;
-    height: 116px;
+    width: 56px;
+    height: 111px;
 }
 
 /* Left ring location */
@@ -152,8 +152,8 @@
     position: absolute;
     top: 39px;
     left: 59px;
-    width: 59px;
-    height: 116px;
+    width: 56px;
+    height: 111px;
 }
 
 /* Alterntive right hand weapon location */
@@ -163,6 +163,6 @@
     position: absolute;
     top: 39px;
     left: 287px;
-    width: 59px;
-    height: 116px;
+    width: 56px;
+    height: 111px;
 }

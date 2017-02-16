@@ -54,10 +54,10 @@
 }
 
 .broadcast {
-    position: absolute;
-    top: 25%;
-    width: 100%;
+    width: 900px;
+    margin: 100px auto;
     text-align: center;
+
 }
 
 .broadcast-text {
