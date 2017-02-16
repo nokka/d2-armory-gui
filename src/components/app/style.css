@@ -8,10 +8,6 @@ body {
     text-shadow: 1px 1px 0 #000;
 }
 
-#root {
-    height: 100%;
-}
-
 .app {
     height: 100%;
     width: 100%;
