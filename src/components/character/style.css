@@ -134,6 +134,10 @@ li.dr::before {
     content: "\E32A";
 }
 
+li.aura::before {
+    content: "\E906";
+}
+
 @media (min-width: 900px) {
     .character-sheet, .menu-grid {
         width: 900px;

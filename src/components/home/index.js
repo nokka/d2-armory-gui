@@ -23,7 +23,7 @@ export default class Home extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if(this.state.name.length > 1 && !this.pattern.test(this.state.name)) {
+        if((this.state.name.length < 2 || this.state.name.length > 16) || !this.pattern.test(this.state.name)) {
             this.setState({error: true});
         } else {
             this.setState({error: false});

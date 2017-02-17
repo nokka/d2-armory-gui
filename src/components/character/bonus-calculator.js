@@ -1,3 +1,5 @@
+import Skills from './skill-map'
+
 module.exports = {
     calculate: function(bonuses, list) {
 
@@ -57,6 +59,18 @@ module.exports = {
                 case 136:
                     if(0 in list[i].values) {
                         bonuses.cb += list[i].values[0];
+                    }
+                    break;
+
+                // Equipped aura
+                case 151:
+                    if(0 in list[i].values && 1 in list[i].values) {
+
+
+                        bonuses.auras.push({
+                            name: Skills.list[list[i].values[0]],
+                            level: list[i].values[1]
+                        });
                     }
                     break;
                 default:

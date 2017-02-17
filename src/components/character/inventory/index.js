@@ -7,7 +7,8 @@ import Item from '../item'
 export default class Inventory extends React.Component {
 
     state = {
-        items: null
+        items: null,
+        loaded: false
     }
 
     constructor(props) {

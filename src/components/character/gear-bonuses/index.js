@@ -28,6 +28,7 @@ export default class GearBonuses extends React.Component {
 
         if(props.data.equipped.length > 0) {
             props.data.equipped.map(function(item) {
+
                 // Ignoring swap weapons by only counting items with equipped id
                 // below or equal to 10.
                 if(item.equipped_id <=  10) {
@@ -67,7 +68,7 @@ export default class GearBonuses extends React.Component {
     render() {
         return (
             <Cell className="gear-bonuses" col={6} tablet={12} phone={12}>
-                <h3 className="underlined">Gear bonuses</h3>
+                <h3 className="underlined">Key bonuses</h3>
                 <ul>
                     { (this.state.bonuses.fcr > 0) ?
                         <li className="fcr">Faster cast rate: <span className="bonus-value">{this.state.bonuses.fcr}%</span></li>
@@ -106,6 +107,13 @@ export default class GearBonuses extends React.Component {
                     }
                     { (this.state.bonuses.ds > 0) ?
                         <li className="ds">Deadly strike: <span className="bonus-value">{this.state.bonuses.ds}%</span></li>
+                        :
+                        null
+                    }
+                    { (this.state.bonuses.auras.length > 0) ?
+                        this.state.bonuses.auras.map((aura) =>
+                            <li key={`equipped-aura-${aura.name}`} className="aura">Level {aura.level} {aura.name} Aura When Equipped</li>
+                        )
                         :
                         null
                     }

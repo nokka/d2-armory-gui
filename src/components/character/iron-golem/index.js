@@ -23,7 +23,8 @@ export default class IronGolem extends React.Component {
             fhr: 0,
             frw: 0,
             dr: 0,
-            mf: 0
+            mf: 0,
+            auras: []
         };
 
         if(props.data.magic_attributes !== null) {
@@ -50,7 +51,7 @@ export default class IronGolem extends React.Component {
         return (
             <Cell className="golem-inner" col={12}>
                 <div className="golem-bonuses">
-                    <h3 className="underlined">Gear bonuses</h3>
+                    <h3 className="underlined">Key bonuses</h3>
                     <ul>
                     { (this.state.bonuses.fcr > 0) ?
                         <li className="fcr">Faster cast rate: <span className="bonus-value">{this.state.bonuses.fcr}%</span></li>
@@ -89,6 +90,13 @@ export default class IronGolem extends React.Component {
                     }
                     { (this.state.bonuses.ds > 0) ?
                         <li className="ds">Deadly strike: <span className="bonus-value">{this.state.bonuses.ds}%</span></li>
+                        :
+                        null
+                    }
+                    { (this.state.bonuses.auras.length > 0) ?
+                        this.state.bonuses.auras.map((aura) =>
+                            <li key={`merc-aura-${aura.name}`} className="aura">Level {aura.level} {aura.name} Aura When Equipped</li>
+                        )
                         :
                         null
                     }
