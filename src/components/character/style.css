@@ -5,7 +5,39 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* Tabs */
+
+.tabs-menu {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: auto;
+}
+
+.mdl-tabs__tab-bar {
+    border-bottom: none;
+}
+
+.mdl-tabs__tab {
+    background: rgba(0,0,0, 0.5);
+    margin-left: 5px;
+}
+
+a.mdl-tabs__tab {
+    color: #a99877;
+}
+
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
+    background: rgba(0,0,0, 0.8);
+    color: #FFEAD4;
+}
+
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active::after {
+    background: none;
+}
+
 .menu-grid {
+    position: relative;
     margin-top: 0px;
     padding-bottom: 15px;
 }

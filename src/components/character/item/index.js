@@ -188,7 +188,15 @@ export default class Item extends React.Component {
     getItemImage() {
         var itemImage = null;
         if(this.state.item.multiple_pictures === 1) {
-            itemImage = this.state.item.type + "_" + this.state.item.picture_id;
+
+            // If it's annihilus or hellfire torch, we'll display their images instead.
+            if(this.state.item.quality === Quality.unique && (this.state.item.type === "cm1" || this.state.item.type == "cm2")) {
+                itemImage = `u${this.state.item.unique_id}`;
+            }
+            else {
+                itemImage = this.state.item.type + "_" + this.state.item.picture_id;
+            }
+
         } else {
             if(this.state.item.quality === Quality.unique) {
                 itemImage = `u${this.state.item.unique_id}`;
@@ -251,7 +259,7 @@ export default class Item extends React.Component {
         let item = this.state.item;
         let tooltip = this.renderTooltip();
 
-        let equippedName = null;
+        let equippedName = "";
         // If the item is equipped, we'll add the id to the class names.
         if(item.location_id === 1) {
             equippedName = `location-${item.equipped_id}`;

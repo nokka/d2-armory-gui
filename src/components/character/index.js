@@ -1,12 +1,13 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Grid, Icon, Spinner, Cell } from 'react-mdl'
+import { Grid, Icon, Spinner, Cell, Tabs, Tab } from 'react-mdl'
 
 // Constants.
 import Locations from './item-locations'
 
 // Components.
 import EquippedItems from './equipped-items'
+import Inventory from './inventory'
 import Merc from './merc'
 import IronGolem from './iron-golem'
 import GearBonuses from './gear-bonuses'
@@ -27,7 +28,8 @@ export default class AllocatedSkills extends React.Component {
         is_dead: null,
         last_parsed: null,
         error_occurred: false,
-        not_found: false
+        not_found: false,
+        active_tab: 0
     }
 
     componentDidMount() {
@@ -35,7 +37,8 @@ export default class AllocatedSkills extends React.Component {
     }
 
     loadCharacter() {
-        fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`http://localhost:8090/retrieving/v1/character?name=${this.props.params.name}`)
+        //fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
             if (response.status === 404) {
                 throw new Error("Not found");
@@ -132,6 +135,7 @@ export default class AllocatedSkills extends React.Component {
     }
 
     render() {
+
         if(this.state.not_found) {
             document.title = "Character not found";
             return (
@@ -179,6 +183,10 @@ export default class AllocatedSkills extends React.Component {
                             <li><a title="Checkout the ladder" href="http://ladder.slashgaming.net"><Icon name="timeline" /><span>LADDER</span></a></li>
                             <li><a title="Search the armory" href="/"><Icon name="search" /><span>SEARCH</span></a></li>
                         </ul>
+                        <Tabs className="tabs-menu" activeTab={this.state.active_tab} onChange={(tabId) => this.setState({ active_tab: tabId })} ripple>
+                            <Tab>Equipped</Tab>
+                            <Tab>Inventory</Tab>
+                        </Tabs>
                     </Cell>
                 </Grid>
                 <Grid className="character-sheet profile-top">
@@ -189,8 +197,13 @@ export default class AllocatedSkills extends React.Component {
                         <h2 className="char-class">({this.state.header.level}) {this.state.header.class}</h2>
                         <h1 className="char-name">{this.state.header.name}</h1>
                     </Cell>
+
+
                     <GearBonuses data={{equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
-                    <EquippedItems data={this.state.items.equipped}/>
+
+                    {this.state.active_tab === 0 && <EquippedItems data={this.state.items.equipped}/>}
+                    {this.state.active_tab === 1 && <Inventory data={this.state.items.inventory}/>}
+
                 </Grid>
                 <Grid className="character-sheet profile-low">
                     <Attributes data={{class: this.state.header.class, attributes: this.state.attributes, equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>

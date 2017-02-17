@@ -1,0 +1,79 @@
+.inventory-tab {
+    min-height: 250px;
+}
+
+.inv-grid {
+    width: 280px;
+    height: 112px;
+    position: relative;
+    margin: 0px auto;
+    background: url("assets/inv_grid.png");
+}
+
+.inv-item {
+    background: #0b0b26;
+    position: absolute;
+}
+
+.inv-item .item {
+    background: none;
+}
+
+/* X positions */
+.pos-x-0 {
+    left: 0px;
+}
+
+.pos-x-1 {
+    left: 28px;
+}
+
+.pos-x-2 {
+    left: 56px;
+}
+
+.pos-x-3 {
+    left: 84px;
+}
+
+.pos-x-4 {
+    left: 112px;
+}
+
+.pos-x-5 {
+    left: 140px;
+}
+
+.pos-x-6 {
+    left: 168px;
+}
+
+.pos-x-7 {
+    left: 196px;
+}
+
+.pos-x-8 {
+    left: 224px;
+}
+
+.pos-x-9 {
+    left: 252px;
+}
+
+
+/* Y positions */
+.pos-y-0 {
+    top: 0px;
+}
+
+.pos-y-1 {
+    top: 28px;
+}
+
+.pos-y-2 {
+    top: 56px;
+}
+
+.pos-y-3 {
+    top: 84px;
+}

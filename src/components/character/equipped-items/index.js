@@ -20,7 +20,7 @@ export default class EquippedItems extends React.Component {
 
     render() {
         return (
-            <Cell col={6} tablet={12} phone={12}>
+            <Cell className="equipped-tab" col={6} tablet={12} phone={12}>
                 <div className="equipped-items">
                 { this.state.items.map((item) =>
                     <Item key={(item.id)} data={item} />
