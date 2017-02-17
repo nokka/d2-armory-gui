@@ -98,6 +98,7 @@ export default class IronGolem extends React.Component {
                     <h1 className="char-name">Iron Golem</h1>
                     <div className="equipped-items">
                         <Item key={(this.state.item.id)} data={this.state.item} />
+                        <div className={`item-backdrop location-${this.state.item.equipped_id}`}></div>
                     </div>
                 </div>
             </Cell>

@@ -11,12 +11,14 @@ import 'react-mdl/extra/material.js';
 import App from './components/app';
 import Home from './components/home';
 import Character from './components/character';
+import NotFound from './components/not-found';
 
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="character/:name" component={Character}/>
+        <Route path='*' component={NotFound} />
         </Route>
     </Router>
 ), document.getElementById('root'))

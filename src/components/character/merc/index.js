@@ -105,6 +105,10 @@ export default class MercItems extends React.Component {
                         { this.state.items.map((item) =>
                             <Item key={(item.id)} data={item} />
                         )}
+                        <div className="item-backdrop location-1"></div>
+                        <div className="item-backdrop location-3"></div>
+                        <div className="item-backdrop location-4"></div>
+                        <div className="item-backdrop location-5"></div>
                     </div>
                 </div>
             </Cell>

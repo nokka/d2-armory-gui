@@ -4,6 +4,7 @@ import './style.css'
 
 // Constants.
 import Quality from './quality'
+import RuneNames from './rune-names'
 
 // Components.
 import MagicAttribute from './magic-attribute'
@@ -127,6 +128,37 @@ export default class Item extends React.Component {
         );
     }
 
+    /*getSetAttributes() {
+
+        if(this.state.item.set_attributes.length === 0) {
+            return null;
+        }
+
+        var attributes = [];
+        if(this.state.item.set_attributes.length > 0) {
+            this.state.item.set_attributes.map(function(list, i){
+                list.map(function(props, i){
+                    return attributes.push(props);
+                });
+                return true;
+            });
+        }
+
+        return (
+            <div>
+            { (attributes.length > 0) ?
+                attributes.map((props, i) =>
+                    <div key={`${this.state.item.id}-set-wrap-${props.id}-${i}`} className="set-property">
+                        <MagicAttribute key={`${this.state.item.id}-set-${props.id}-${i}`} data={props}/>
+                    </div>
+                )
+                :
+                null
+            }
+            </div>
+        );
+    }*/
+
     getNrOfSockets() {
         var socketed = null;
         if(this.state.item.socketed === 1) {
@@ -158,11 +190,10 @@ export default class Item extends React.Component {
         if(this.state.item.multiple_pictures === 1) {
             itemImage = this.state.item.type + "_" + this.state.item.picture_id;
         } else {
-            /*if(this.state.item.quality === Quality.unique) {
-                itemImage = `${this.state.item.type}_u${this.state.item.unique_id}`;
-            }*/
-
-            if(this.state.item.quality === Quality.set) {
+            if(this.state.item.quality === Quality.unique) {
+                itemImage = `u${this.state.item.unique_id}`;
+            }
+            else if(this.state.item.quality === Quality.set) {
                 itemImage = `s${this.state.item.set_id}`;
             }
             else {
@@ -173,17 +204,41 @@ export default class Item extends React.Component {
         return itemImage;
     }
 
+    getRuneNames() {
+        var names = "";
+        if(this.state.item.nr_of_items_in_sockets > 0) {
+            this.state.item.socketed_items.map(function(item) {
+                var match = item.type.match(/r[0-9]/g);
+                if(match !== null) {
+                    names += RuneNames[item.type];
+                }
+                return true;
+            });
+        }
+
+        if(names.length > 0) {
+            return (
+                <h3 className="type-runeword">{names}</h3>
+            );
+        }
+
+        return null;
+    }
+
     renderTooltip() {
 
         var title = this.getTitle();
+        var runeNames = this.getRuneNames();
         var standardAttributes = this.getStandardAttributes();
         var magicAttributes = this.getMagicAttributes();
+        //var setAttributes = this.getSetAttributes();
         var nrOfSockets = this.getNrOfSockets();
         var ethereal = this.getEthereal();
 
         return (
             <div>
                 {title}
+                {runeNames}
                 {standardAttributes}
                 {magicAttributes}
                 {nrOfSockets}

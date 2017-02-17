@@ -25,6 +25,18 @@ export default class EquippedItems extends React.Component {
                 { this.state.items.map((item) =>
                     <Item key={(item.id)} data={item} />
                 )}
+                <div className="item-backdrop location-1"></div>
+                <div className="item-backdrop location-2"></div>
+                <div className="item-backdrop location-3"></div>
+                <div className="item-backdrop location-4"></div>
+                <div className="item-backdrop location-5"></div>
+                <div className="item-backdrop location-6"></div>
+                <div className="item-backdrop location-7"></div>
+                <div className="item-backdrop location-8"></div>
+                <div className="item-backdrop location-9"></div>
+                <div className="item-backdrop location-10"></div>
+                <div className="item-backdrop location-11"></div>
+                <div className="item-backdrop location-12"></div>
                 </div>
             </Cell>
         );

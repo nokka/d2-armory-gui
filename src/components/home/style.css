@@ -1,6 +1,6 @@
 .home {
     width: 400px;
-    height: 220px;
+    height: 230px;
     margin: 10% auto;
     padding: 15px 50px 50px 50px;
     background: rgba(0,0,0, 0.5);
@@ -30,6 +30,13 @@
     padding: 0px 0px 0px 45px;
 }
 
+.error-label {
+    background: #541e1d;
+    color: #fff;
+    padding: 5px 5px 5px 15px;
+    margin-bottom: 0px;
+}
+
 .searcher::before {
     font-family: "Material Icons";
     font-size: 23px;
@@ -42,6 +49,7 @@
 
 .home button {
     margin-top: 10px;
+    background: #417d80 !important;
 }
 
 @media (max-width: 480px) {

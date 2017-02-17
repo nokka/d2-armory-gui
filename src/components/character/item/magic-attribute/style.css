@@ -1,3 +1,7 @@
 p.magic-property {
     color: #5050ab;
 }
+
+.set-property .magic-property {
+    color: #19fa00;
+}

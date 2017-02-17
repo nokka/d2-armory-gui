@@ -22,7 +22,8 @@ export default class GearBonuses extends React.Component {
             fhr: 0,
             frw: 0,
             dr: 0,
-            mf: 0
+            mf: 0,
+            auras: []
         };
 
         if(props.data.equipped.length > 0) {

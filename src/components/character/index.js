@@ -15,7 +15,7 @@ import Skills from './skills'
 
 import './style.css'
 
-export default class Ladder extends React.Component {
+export default class AllocatedSkills extends React.Component {
 
     state = {
         header: null,
@@ -26,19 +26,22 @@ export default class Ladder extends React.Component {
         golem_item: null,
         is_dead: null,
         last_parsed: null,
-        error_occurred: false
+        error_occurred: false,
+        not_found: false
     }
 
     componentDidMount() {
-        document.title = "Character";
         this.loadCharacter();
     }
 
     loadCharacter() {
-        fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`http://localhost:8090/retrieving/v1/character?name=${this.props.params.name}`)
+        //fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
-            console.log(response.status);
-            if (response.status >= 400) {
+            if (response.status === 404) {
+                throw new Error("Not found");
+            }
+            else if (response.status > 404) {
                 throw new Error("Something went terribly wrong");
             }
             return response.json();
@@ -117,15 +120,31 @@ export default class Ladder extends React.Component {
 
         })
         .catch((e) => {
-            this.setState({
-                error_occurred: true
-            });
+            if(e.message === 'Not found') {
+                this.setState({
+                    not_found: true
+                });
+            } else {
+                this.setState({
+                    error_occurred: true
+                });
+            }
         });
     }
 
     render() {
-        console.log(this.state);
+        if(this.state.not_found) {
+            document.title = "Character not found";
+            return (
+                <div className="broadcast">
+                    <Icon name="power" />
+                    <h1 className="broadcast-text">Character unfortunately does not exist, bug Meanski about it.</h1>
+                </div>
+            );
+        }
+
         if(this.state.error_occurred) {
+            document.title = "Parsing error";
             return (
                 <div className="broadcast">
                     <Icon name="adb" />
@@ -142,6 +161,8 @@ export default class Ladder extends React.Component {
                 </div>
             );
         }
+
+        document.title = this.state.header.name;
 
         if(this.state.is_dead === 1) {
             return (
