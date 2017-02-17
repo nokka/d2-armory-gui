@@ -120,6 +120,8 @@
     left: 287px;
     width: 56px;
     height: 111px;
+    white-space: nowrap;
+    text-align: center;
     z-index: 2;
     border-radius: 3px;
 }
@@ -217,6 +219,8 @@
     left: 59px;
     width: 56px;
     height: 111px;
+    white-space: nowrap;
+    text-align: center;
     z-index: 2;
     border-radius: 3px;
 }
@@ -235,6 +239,8 @@
     left: 287px;
     width: 56px;
     height: 111px;
+    white-space: nowrap;
+    text-align: center;
     z-index: 2;
     border-radius: 3px;
 }
