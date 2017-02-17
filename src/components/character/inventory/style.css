@@ -17,6 +17,12 @@
 
 .inv-item .item {
     background: none;
+    border: none;
+}
+
+.inv-item .item:hover {
+    border: none;
+    background: #0e1207;
 }
 
 /* X positions */

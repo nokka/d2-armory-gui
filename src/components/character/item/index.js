@@ -29,8 +29,12 @@ export default class Item extends React.Component {
 
         switch (this.state.item.quality) {
             case Quality.magicallyEnhanced:
-                magic_prefix = this.state.item.magic_prefix_name;
-                magic_suffix = this.state.item.magic_suffix_name;
+                if(this.state.item.magic_prefix > 0) {
+                    magic_prefix = this.state.item.magic_prefix_name;
+                }
+                if(this.state.item.magic_suffix > 0) {
+                    magic_suffix = this.state.item.magic_suffix_name;
+                }
                 break;
             case Quality.set:
                 prefix = this.state.item.set_name;
@@ -64,7 +68,11 @@ export default class Item extends React.Component {
                 <h3 className={`type-${prefixClass}`}>{prefix}</h3>
 
                 { (this.state.item.quality === Quality.magicallyEnhanced) ?
-                    <h3 className={`type-${this.state.item.quality}`}>{magic_prefix} {this.state.item.type_name} of {magic_suffix}</h3>
+                    <h3 className={`type-${this.state.item.quality}`}>
+                        {this.state.item.magic_prefix > 0 && `${magic_prefix} `}
+                        {this.state.item.type_name}
+                        {this.state.item.magic_suffix > 0 && ` of ${magic_suffix}`}
+                    </h3>
                     :
                     <h3 className={`type-${this.state.item.quality}`}>{this.state.item.type_name}</h3>
                 }
@@ -190,7 +198,7 @@ export default class Item extends React.Component {
         if(this.state.item.multiple_pictures === 1) {
 
             // If it's annihilus or hellfire torch, we'll display their images instead.
-            if(this.state.item.quality === Quality.unique && (this.state.item.type === "cm1" || this.state.item.type == "cm2")) {
+            if(this.state.item.quality === Quality.unique && (this.state.item.type === "cm1" || this.state.item.type === "cm2")) {
                 itemImage = `u${this.state.item.unique_id}`;
             }
             else {

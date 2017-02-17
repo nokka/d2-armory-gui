@@ -578,7 +578,7 @@ module.exports = {
                 // For example, if the value is 5, then this property repairs 1 durability in 100 / 5 = 20 seconds.
 
                 if(0 in property.values) {
-                    property.values[0] = 100 / property.values[0];
+                    property.values[0] = parseInt(100 / property.values[0], 10);
                 }
 
                 break;
