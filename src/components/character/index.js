@@ -181,6 +181,7 @@ export default class AllocatedSkills extends React.Component {
                         <ul className="menu">
                             <li><a title="Checkout the ladder" href="http://ladder.slashgaming.net"><Icon name="timeline" /><span>LADDER</span></a></li>
                             <li><a title="Search the armory" href="/"><Icon name="search" /><span>SEARCH</span></a></li>
+                            <li><a title="Slash subreddit" href="https://reddit.com/r/slashdiablo"><Icon name="comment" /><span>REDDIT</span></a></li>
                         </ul>
                         <Tabs className="tabs-menu" activeTab={this.state.active_tab} onChange={(tabId) => this.setState({ active_tab: tabId })} ripple>
                             <Tab>Equipped</Tab>
