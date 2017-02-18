@@ -1,6 +1,10 @@
 module.exports = {
     merge: function(attributes, list) {
 
+        if(list.merged === true) {
+            return attributes;
+        }
+
         for(var i = 0; i < list.length; i++) {
             var index = this._exists(list[i].id, attributes);
 
@@ -21,6 +25,8 @@ module.exports = {
 
                             attributes[index].values[0] += minToAdd;
                             attributes[index].values[1] += maxToAdd;
+
+                            list.merged = true;
                             //property.values[2] /= 25;
                         }
 
@@ -47,11 +53,13 @@ module.exports = {
 
                         if(2 in attributes[index].values) {
                             attributes[index].values[2] += list[i].values[2];
+                            list.merged = true;
                         }
                         break;
                     default:
                         if(0 in attributes[index].values) {
                             attributes[index].values[0] += list[i].values[0];
+                            list.merged = true;
                         }
                         break;
                 }
