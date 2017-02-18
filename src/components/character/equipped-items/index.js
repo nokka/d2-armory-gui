@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell } from 'react-mdl'
+import { Cell, Tabs, Tab } from 'react-mdl'
 import './style.css'
 
 import Item from '../item'
@@ -7,21 +7,31 @@ import Item from '../item'
 export default class EquippedItems extends React.Component {
 
     state = {
-        items: null
+        items: null,
+        swap: 0
     }
 
     constructor(props) {
         super(props);
 
         this.state = {
-            items: props.data
+            items: props.data,
+            swap: 0
         };
     }
 
     render() {
         return (
             <Cell className="equipped-tab" col={6} tablet={12} phone={12}>
-                <div className="equipped-items">
+                <div className={`equipped-items swap-index-${this.state.swap}`}>
+                <Tabs className="left-swap swap-tab" activeTab={this.state.swap} onChange={(tabId) => this.setState({ swap: tabId })} ripple>
+                    <Tab>i</Tab>
+                    <Tab>ii</Tab>
+                </Tabs>
+                <Tabs className="right-swap swap-tab" activeTab={this.state.swap} onChange={(tabId) => this.setState({ swap: tabId })} ripple>
+                    <Tab>i</Tab>
+                    <Tab>ii</Tab>
+                </Tabs>
                 { this.state.items.map((item) =>
                     <Item key={(item.id)} data={item} />
                 )}

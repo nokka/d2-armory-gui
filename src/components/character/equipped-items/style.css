@@ -213,7 +213,6 @@
 
 /* Alternative left hand weapon location */
 .item.location-11, .item-backdrop.location-11 {
-    display: none;
     position: absolute;
     top: 39px;
     left: 59px;
@@ -227,13 +226,11 @@
 
 .item-backdrop.location-11 {
     background: url("./assets/inv_weapons.png") no-repeat;
-    display: none;
     z-index: 1;
 }
 
 /* Alterntive right hand weapon location */
 .item.location-12, .item-backdrop.location-12 {
-    display: none;
     position: absolute;
     top: 39px;
     left: 287px;
@@ -247,6 +244,63 @@
 
 .item-backdrop.location-12 {
     background: url("./assets/inv_weapons.png") no-repeat;
-    display: none;
     z-index: 1;
+}
+
+/* Show on swap */
+.swap-index-1 .item.location-4, .swap-index-1 .item-backdrop.location-4 {
+    display: none;
+}
+
+.swap-index-1 .item.location-5, .swap-index-1 .item-backdrop.location-5 {
+    display: none;
+}
+
+.swap-index-0 .item.location-11, .swap-index-0 .item-backdrop.location-11 {
+    display: none;
+}
+
+.swap-index-0 .item.location-12, .swap-index-0 .item-backdrop.location-12 {
+    display: none;
+}
+
+/* Tabs */
+.swap-tab {
+    position: absolute;
+    font-family: "Exocet Light", sans-serif;
+    top: 0px;
+    left: 0px;
+    width: 98px;
+    height: 25px;
+    padding: 5px;
+}
+
+.swap-tab .mdl-tabs__tab-bar {
+    height: 25px;
+    line-height: 28px;
+}
+
+.swap-tab .mdl-ripple {
+    width: 25px;
+    height: 25px;
+}
+
+.swap-tab .mdl-tabs__tab {
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+    margin-left: 2px;
+    line-height: 28px;
+}
+
+/* Left tab */
+.left-swap {
+    top: 9px;
+    left: 32px;
+}
+
+/* Right tab */
+.right-swap {
+    top: 9px;
+    left: 261px;
 }
