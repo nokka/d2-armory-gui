@@ -63,7 +63,6 @@ module.exports = {
                 // Number of levels to a certain class specific skill, e.g.
                 // +3 to Lightning Fury. Index 0 is the skill id, and index 1
                 // is the number of + skills.
-
                 if(!property.normalized) {
                     property.values[0] = Skills.list[property.values[0]];
                     property.normalized = true;

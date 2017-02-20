@@ -55,16 +55,29 @@
     max-width: 56px;
 }
 
-.item .socketed-items.sockets-5 .socketed-position-2{
-    margin: 0px 14px 0px 14px;
-}
-
 .item .socketed-items.sockets-6 {
     max-width: 56px;
 }
 
 .item .socketed-items.sockets-1 {
     top: 25%;
+}
+
+/* Special sockets rules */
+
+/* If the item is a helm and has 3 sockets, display the 1rd rune on its on row centered. */
+.item.location-1 .socketed-items.sockets-3 .socketed-position-2 {
+    margin: 0px 14px 0px 14px;
+}
+
+/* If the item is a helm and has 3 sockets, make the width of the sockets 56px to support 2 runes. */
+.item.location-1 .socketed-items.sockets-3 {
+    max-width: 56px;
+}
+
+/* If the item is 5 socketed, display the 3rd rune on its on row centered. */
+.item .socketed-items.sockets-5 .socketed-position-2{
+    margin: 0px 14px 0px 14px;
 }
 
 /* Quality colors */

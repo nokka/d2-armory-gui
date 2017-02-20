@@ -72,6 +72,18 @@ module.exports = {
     },
     _exists: function(id, list) {
 
+        // There are a bunch of exceptions where we don't want to merge,
+        // for example items giving + to certain skill trees. If we
+        // add them up, we'll get a skill id + another skill id, and
+        // and up with a non existing skill id, so we'll just return -1 to
+        // tell the merger not to merge this attribute.
+        switch(id) {
+            case 107:
+                return -1;
+            default:
+                break;
+        }
+
         for (var i = 0; i < list.length; i++) {
             if (list[i].id === id) {
                 return i;
