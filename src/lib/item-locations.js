@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     character: {
         equipped: 1,
         belt: 2,

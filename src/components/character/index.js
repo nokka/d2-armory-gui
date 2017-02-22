@@ -2,8 +2,7 @@ import React from 'react'
 import fetch from 'isomorphic-fetch'
 import { Grid, Icon, Spinner, Cell, Tabs, Tab } from 'react-mdl'
 
-// Constants.
-import Locations from './item-locations'
+import { handleItem } from 'APP/lib/utils';
 
 // Components.
 import EquippedItems from './equipped-items'
@@ -59,39 +58,7 @@ export default class AllocatedSkills extends React.Component {
                     cube: []
                 };
 
-                response.character.d2s.items.map(function(item) {
-                    // First lets check if it's equipped, then it'll have
-                    // the location_id set.
-
-                    switch(item.location_id) {
-                        case Locations.character.equipped:
-                            return items.equipped.push(item);
-
-                        case Locations.character.belt:
-                            return items.belt.push(item);
-
-                        default:
-                            break;
-                    }
-
-                    // Looks like the item isn't equipped, so it has to be stored
-                    // in cube, stash or inventory.
-                    switch(item.alt_position_id) {
-                        case Locations.stored.inventory:
-                            return items.inventory.push(item);
-
-                        case Locations.stored.cube:
-                            return items.cube.push(item);
-
-                        case Locations.stored.stash:
-                            return items.stash.push(item);
-
-                        default:
-                            break;
-                    }
-
-                    return true;
-                });
+                response.character.d2s.items.forEach((item) => handleItem(item, items));
 
                 // When you include a script in the HTML file that defines
                 // global variables and try to use one of these variables in the code,
