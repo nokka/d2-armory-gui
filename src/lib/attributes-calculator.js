@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     lifePerVitality: {
         "Amazon": 3,
         "Sorceress": 2,
@@ -69,5 +69,21 @@ module.exports = {
         }
 
         return attributes;
+    },
+    calculateItem: function(item, extraAttributes) {
+
+        if(item.magic_attributes !== null) {
+            this.calculate(extraAttributes, item.magic_attributes);
+        }
+
+        if(item.runeword_attributes !== null) {
+            this.calculate(extraAttributes, item.runeword_attributes);
+        }
+
+        if(item.socketed_items !== null) {
+            for(var i = 0; i < item.socketed_items.length; i++) {
+                this.calculate(extraAttributes, item.socketed_items[i].magic_attributes);
+            }
+        }
     }
 };

@@ -2,8 +2,7 @@ import React from 'react'
 import { Cell } from 'react-mdl'
 import './style.css'
 
-// Components.
-import Calculator from './attributes-calculator'
+import Calculator from 'APP/lib/attributes-calculator';
 
 export default class Attributes extends React.Component {
 
@@ -24,26 +23,11 @@ export default class Attributes extends React.Component {
         };
 
         if(props.data.equipped.length > 0) {
-            props.data.equipped.map(function(item) {
-                // Ignoring swap weapons by only counting items with equipped id
-                // below or equal to 10.
-                if(item.equipped_id <=  10) {
-                    if(item.magic_attributes !== null) {
-                        Calculator.calculate(extraAttributes, item.magic_attributes);
-                    }
-
-                    if(item.runeword_attributes !== null) {
-                        Calculator.calculate(extraAttributes, item.runeword_attributes);
-                    }
-
-                    if(item.socketed_items !== null) {
-                        for(var i = 0; i < item.socketed_items.length; i++) {
-                            Calculator.calculate(extraAttributes, item.socketed_items[i].magic_attributes);
-                        }
-                    }
-                }
-                return true;
-            });
+            // Ignoring swap weapons by only counting items with equipped id
+            // below or equal to 10.
+            props.data.equipped
+              .filter((item) => item.equipped_id <= 10)
+              .forEach((item) => Calculator.calculateItem(item, extraAttributes));
         }
 
         if(props.data.inventory.length > 0) {
