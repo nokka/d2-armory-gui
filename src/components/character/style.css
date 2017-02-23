@@ -1,9 +1,20 @@
+
 .character-sheet {
     padding-top: 0px;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    &.profile-top {
+        padding-top: 20px;
+        background: rgba(0,0,0, 0.8);
+    }
+
+    &.profile-low, &.merc, &.iron-golem {
+        background: rgba(0,0,0, 0.7);
+    }
 }
+
 
 /* Tabs */
 
@@ -74,21 +85,10 @@ a.mdl-tabs__tab {
     }
 }
 
-.profile-top {
-    padding-top: 20px;
-    /*background: #0f0e0d;*/
-    background: rgba(0,0,0, 0.8);
-}
-
-.profile-low, .merc, .iron-golem {
-    background: rgba(0,0,0, 0.7);
-}
-
 .broadcast {
     width: 900px;
     margin: 100px auto;
     text-align: center;
-
 }
 
 .broadcast-text {
@@ -135,6 +135,39 @@ li.dr::before {
 
 li.aura::before {
     content: "\E906";
+}
+
+@media (max-width: 767px) {
+    .broadcast {
+        width: 100%;
+    }
+
+    .equipped-tab, .inventory-tab {
+        margin-top: 50px;
+    }
+
+    .menu-grid {
+        height: 160px;
+    }
+
+    .menu {
+        li {
+            padding: 0px 0px 15px 0px;
+            margin: 0px;
+            width: 33%;
+        }
+    }
+
+    .mdl-tooltip {
+        position: absolute;
+        top: 0px !important;
+        left: 0px !important;
+        right: 0px !important;
+        bottom: 0px !important;
+        margin-top: 0px !important;
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 @media (min-width: 900px) {

@@ -304,3 +304,11 @@
     top: 9px;
     left: 261px;
 }
+
+@media (max-width: 767px) {
+
+    .item.location-4, .item-backdrop.location-4 {
+        
+    }
+
+}
