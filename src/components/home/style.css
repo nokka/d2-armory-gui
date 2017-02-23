@@ -4,53 +4,85 @@
     margin: 10% auto;
     padding: 15px 50px 50px 50px;
     background: rgba(0,0,0, 0.5);
+
+    h1 {
+        margin: 10px 0px 15px 0px;
+    }
+
+    .searcher {
+        position: relative;
+        width: 100%;
+        height: 55px;
+        background: #000;
+        margin-bottom: 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+
+        &::before {
+            font-family: "Material Icons";
+            font-size: 23px;
+            content: "\E8B6";
+            color: #fff;
+            position: absolute;
+            top: 19px;
+            left: 12px;
+        }
+
+        input {
+            font-size: 15px;
+            height: 55px;
+            background: none;
+            border: none;
+            width: 90%;
+            color: #FFEAD4;
+            padding: 0px 0px 0px 45px;
+        }
+    }
+
+    .error-label {
+        background: #541e1d;
+        color: #fff;
+        padding: 5px 5px 5px 15px;
+        margin-bottom: 0px;
+    }
+
+    button {
+        margin-top: 10px;
+        background: #417d80 !important;
+    }
 }
 
-.home h1 {
-    margin: 10px 0px 15px 0px;
-}
-.home .searcher {
-    position: relative;
-    width: 100%;
-    height: 55px;
-    background: #000;
-    margin-bottom: 20px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-}
+@media (max-width: 767px) {
 
-.searcher input {
-    font-size: 15px;
-    height: 55px;
-    background: none;
-    border: none;
-    width: 90%;
-    color: #FFEAD4;
-    padding: 0px 0px 0px 45px;
-}
+    .home {
+        position: absolute;
+        width: auto;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        padding: 5px;
+        margin: 0px;
+        min-height: 100%;
 
-.error-label {
-    background: #541e1d;
-    color: #fff;
-    padding: 5px 5px 5px 15px;
-    margin-bottom: 0px;
-}
+        h1 {
+            text-align: center;
+        }
 
-.searcher::before {
-    font-family: "Material Icons";
-    font-size: 23px;
-    content: "\E8B6";
-    color: #fff;
-    position: absolute;
-    top: 19px;
-    left: 12px;
-}
+        .searcher {
+            position: relative;
+            width: 100%;
 
-.home button {
-    margin-top: 10px;
-    background: #417d80 !important;
-}
+            input {
+                left: 0px;
+                right: 0px;
+            }
+        }
 
-@media (max-width: 480px) {
+        button {
+            display: block;
+            width: 100%;
+        }
+    }
 }
