@@ -46,33 +46,32 @@ a.mdl-tabs__tab {
     height: 50px;
     padding: 0px;
     list-style-type: none;
-}
 
-.menu li {
-    float: left;
-    margin-right: 15px;
-    text-align: center;
-    border-bottom: 2px solid #312a1e;
-    padding: 5px 15px 5px 15px;
-}
+    li {
+      float: left;
+      margin-right: 15px;
+      text-align: center;
+      border-bottom: 2px solid #312a1e;
+      padding: 5px 15px 5px 15px;
+      &:hover {
+        border-bottom: 2px solid #f3e6d0;
+      }
+    }
 
-.menu li:hover {
-    border-bottom: 2px solid #f3e6d0;
-}
+    i {
+      color: #f3e6d0;
+    }
 
-.menu i {
-    color: #f3e6d0;
-}
+    a {
+      height: 50px;
+      width: 50px;
+      color: #a99877;
+      text-decoration: none;
+    }
 
-.menu a {
-    height: 50px;
-    width: 50px;
-    color: #a99877;
-    text-decoration: none;
-}
-
-.menu span {
-    display: block;
+    span {
+      display: block;
+    }
 }
 
 .profile-top {
