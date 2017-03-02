@@ -3,7 +3,7 @@ import { Cell } from 'react-mdl'
 import './style.css'
 
 // Components.
-import Calculator from '../bonus-calculator'
+import Calculator from 'APP/lib/bonus-calculator';
 
 export default class GearBonuses extends React.Component {
 

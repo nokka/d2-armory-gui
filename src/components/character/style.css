@@ -15,7 +15,6 @@
     }
 }
 
-
 /* Tabs */
 
 .tabs-menu {
@@ -135,6 +134,105 @@ li.dr::before {
 
 li.aura::before {
     content: "\E906";
+}
+
+/* Stash, Iventory and Cube. */
+
+.inv-item {
+    background: #0b0b26;
+    position: absolute;
+}
+
+.inv-item .item {
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+    background: none;
+    border: none;
+}
+
+.inv-item .item:hover {
+    border: none;
+    background: #0e1207;
+}
+
+/* X positions */
+.pos-x-0 {
+    left: 0px;
+}
+
+.pos-x-1 {
+    left: 28px;
+}
+
+.pos-x-2 {
+    left: 56px;
+}
+
+.pos-x-3 {
+    left: 84px;
+}
+
+.pos-x-4 {
+    left: 112px;
+}
+
+.pos-x-5 {
+    left: 140px;
+}
+
+.pos-x-6 {
+    left: 168px;
+}
+
+.pos-x-7 {
+    left: 196px;
+}
+
+.pos-x-8 {
+    left: 224px;
+}
+
+.pos-x-9 {
+    left: 252px;
+}
+
+
+/* Y positions */
+.pos-y-0 {
+    top: 0px;
+}
+
+.pos-y-1 {
+    top: 28px;
+}
+
+.pos-y-2 {
+    top: 56px;
+}
+
+.pos-y-3 {
+    top: 84px;
+}
+
+.pos-y-4 {
+    top: 112px;
+}
+
+.pos-y-5 {
+    top: 140px;
+}
+
+.pos-y-6 {
+    top: 168px;
+}
+
+.pos-y-7 {
+    top: 196px;
+}
+
+.pos-y-8 {
+    top: 224px;
 }
 
 @media (max-width: 767px) {

@@ -1,9 +1,9 @@
-.inventory-tab {
-    min-height: 250px;
+.cube-tab {
+    min-height: 112px;
 }
 
-.inv-grid {
-    width: 280px;
+.cube-grid {
+    width: 84px;
     height: 112px;
     position: relative;
     margin: 0px auto;

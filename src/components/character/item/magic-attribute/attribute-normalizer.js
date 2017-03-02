@@ -1,4 +1,4 @@
-import Skills from '../../skill-map'
+import Skills from 'APP/lib/skill-map';
 
 const classes = {
     0: "Amazon",

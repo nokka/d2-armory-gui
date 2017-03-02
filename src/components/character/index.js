@@ -7,6 +7,8 @@ import { handleItem } from 'APP/lib/utils';
 // Components.
 import EquippedItems from './equipped-items'
 import Inventory from './inventory'
+import Stash from './stash'
+import Cube from './cube'
 import Merc from './merc'
 import IronGolem from './iron-golem'
 import GearBonuses from './gear-bonuses'
@@ -14,6 +16,20 @@ import Attributes from './attributes'
 import Skills from './skills'
 
 import './style.css'
+
+const TabNames = {
+    equipped: '#equipped',
+    inventory: '#inventory',
+    stash: '#stash',
+    cube: '#cube'
+};
+
+const TabIDs = {
+    0: '#equipped',
+    1: '#inventory',
+    2: '#stash',
+    3: '#cube'
+};
 
 export default class AllocatedSkills extends React.Component {
 
@@ -32,6 +48,25 @@ export default class AllocatedSkills extends React.Component {
     }
 
     componentDidMount() {
+        var tab = this.props.location.hash;
+
+        var active = 0;
+        switch(tab) {
+            case TabNames.equipped:
+                active = 0;
+                break;
+            case TabNames.inventory:
+                active = 1;
+                break;
+            case TabNames.stash:
+                active = 2;
+                break;
+            case TabNames.cube:
+                active = 3;
+                break;
+        }
+
+        this.setState({active_tab: active});
         this.loadCharacter();
     }
 
@@ -100,6 +135,11 @@ export default class AllocatedSkills extends React.Component {
         });
     }
 
+    determineTab(tabId) {
+        this.setState({ active_tab: tabId });
+        window.location.hash = TabIDs[tabId];
+    }
+
     render() {
 
         if(this.state.not_found) {
@@ -150,9 +190,11 @@ export default class AllocatedSkills extends React.Component {
                             <li><a title="Search the armory" href="/"><Icon name="search" /><span>SEARCH</span></a></li>
                             <li><a title="Slash subreddit" href="https://reddit.com/r/slashdiablo"><Icon name="comment" /><span>REDDIT</span></a></li>
                         </ul>
-                        <Tabs className="tabs-menu" activeTab={this.state.active_tab} onChange={(tabId) => this.setState({ active_tab: tabId })} ripple>
+                        <Tabs className="tabs-menu" activeTab={this.state.active_tab} onChange={(tabId) => this.determineTab(tabId)} ripple>
                             <Tab>Equipped</Tab>
                             <Tab>Inventory</Tab>
+                            <Tab>Stash</Tab>
+                            <Tab>Cube</Tab>
                         </Tabs>
                     </Cell>
                 </Grid>
@@ -170,6 +212,8 @@ export default class AllocatedSkills extends React.Component {
 
                     {this.state.active_tab === 0 && <EquippedItems data={this.state.items.equipped}/>}
                     {this.state.active_tab === 1 && <Inventory data={this.state.items.inventory}/>}
+                    {this.state.active_tab === 2 && <Stash data={this.state.items.stash}/>}
+                    {this.state.active_tab === 3 && <Cube data={this.state.items.cube}/>}
 
                 </Grid>
                 <Grid className="character-sheet profile-low">

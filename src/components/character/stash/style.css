@@ -1,10 +1,10 @@
-.inventory-tab {
-    min-height: 250px;
+.stash-tab {
+    min-height: 224px;
 }
 
-.inv-grid {
-    width: 280px;
-    height: 112px;
+.stash-grid {
+    width: 168px;
+    height: 224px;
     position: relative;
     margin: 0px auto;
     background: url("../assets/inv_grid.png");

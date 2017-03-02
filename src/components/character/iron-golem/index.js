@@ -4,7 +4,7 @@ import './style.css'
 
 // Components.
 import Item from '../item'
-import Calculator from '../bonus-calculator'
+import Calculator from 'APP/lib/bonus-calculator';
 
 export default class IronGolem extends React.Component {
 
