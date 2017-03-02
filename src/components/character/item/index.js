@@ -267,17 +267,20 @@ export default class Item extends React.Component {
         let item = this.state.item;
         let tooltip = this.renderTooltip();
 
-        let equippedName = "";
+        let locationClass = "";
         // If the item is equipped, we'll add the id to the class names.
         if(item.location_id === 1) {
-            equippedName = `location-${item.equipped_id}`;
+            locationClass = `location-${item.equipped_id}`;
+        }
+        else {
+            locationClass = 'inv-item';
         }
 
         let itemImage = this.getItemImage();
 
         return (
             <Tooltip position="left" className="item-tooltip" label={tooltip}>
-                <div className={`item ${equippedName} quality-${item.quality} inv-item pos-x-${item.position_x} pos-y-${item.position_y}`}>
+                <div className={`item ${locationClass} quality-${item.quality} pos-x-${item.position_x} pos-y-${item.position_y}`}>
                     <span className="helper"></span>
                     <div className={`item-image`}>
                         <img className={`ethereal-${item.ethereal}`} src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.png`} role="presentation"/>
