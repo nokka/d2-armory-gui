@@ -277,7 +277,7 @@ export default class Item extends React.Component {
 
         return (
             <Tooltip position="left" className="item-tooltip" label={tooltip}>
-                <div className={`item ${equippedName} quality-${item.quality}`}>
+                <div className={`item ${equippedName} quality-${item.quality} inv-item pos-x-${item.position_x} pos-y-${item.position_y}`}>
                     <span className="helper"></span>
                     <div className={`item-image`}>
                         <img className={`ethereal-${item.ethereal}`} src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.png`} role="presentation"/>

@@ -1,5 +1,6 @@
 .inventory-tab {
     min-height: 250px;
+    position: relative;
 }
 
 .inv-grid {

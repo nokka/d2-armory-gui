@@ -64,6 +64,9 @@ export default class AllocatedSkills extends React.Component {
             case TabNames.cube:
                 active = 3;
                 break;
+            default:
+                active = 0;
+                break;
         }
 
         this.setState({active_tab: active});

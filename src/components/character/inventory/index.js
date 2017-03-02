@@ -24,9 +24,7 @@ export default class Inventory extends React.Component {
             <Cell className="inventory-tab" col={6} tablet={12} phone={12}>
                 <div className="inv-grid">
                     { this.state.items.map((item) =>
-                        <div key={`inv-${item.id}-pos-${item.position_x}-${item.position_y}`} className={`inv-item pos-x-${item.position_x} pos-y-${item.position_y}`}>
-                            <Item data={item} />
-                        </div>
+                        <Item key={`inv-${item.id}-pos-${item.position_x}-${item.position_y}`} data={item} />
                     )}
                 </div>
             </Cell>
