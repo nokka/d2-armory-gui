@@ -194,10 +194,22 @@ export default class AllocatedSkills extends React.Component {
                             <li><a title="Slash subreddit" href="https://reddit.com/r/slashdiablo"><Icon name="comment" /><span>REDDIT</span></a></li>
                         </ul>
                         <Tabs className="tabs-menu" activeTab={this.state.active_tab} onChange={(tabId) => this.determineTab(tabId)} ripple>
-                            <Tab>Equipped</Tab>
-                            <Tab>Inventory</Tab>
-                            <Tab>Stash</Tab>
-                            <Tab>Cube</Tab>
+                            <Tab>
+                                <span className="visible-desktop">Equipped</span>
+                                <span className="visible-mobile"><Icon name="person"/></span>
+                            </Tab>
+                            <Tab>
+                                <span className="visible-desktop">Inventory</span>
+                                <span className="visible-mobile"><Icon name="room"/></span>
+                            </Tab>
+                            <Tab>
+                                <span className="visible-desktop">Stash</span>
+                                <span className="visible-mobile"><Icon name="home"/></span>
+                            </Tab>
+                            <Tab>
+                                <span className="visible-desktop">Cube</span>
+                                <span className="visible-mobile"><Icon name="crop_square"/></span>
+                            </Tab>
                         </Tabs>
                     </Cell>
                 </Grid>

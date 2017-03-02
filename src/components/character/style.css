@@ -17,6 +17,10 @@
 
 /* Tabs */
 
+.visible-mobile {
+    display: none;
+}
+
 .tabs-menu {
     position: absolute;
     right: 0px;
@@ -138,6 +142,10 @@ li.aura::before {
 
 /* Stash, Iventory and Cube. */
 
+.tab-header {
+    text-align: center;
+}
+
 .inv-item {
     background: #0b0b26;
     position: absolute;
@@ -236,6 +244,16 @@ li.aura::before {
 }
 
 @media (max-width: 767px) {
+
+    .visible-mobile {
+        display: inline-block;
+        vertical-align: -6px;
+    }
+
+    .visible-desktop {
+        display: none;
+    }
+
     .broadcast {
         width: 100%;
     }
