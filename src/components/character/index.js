@@ -66,6 +66,7 @@ export default class AllocatedSkills extends React.Component {
                 break;
             default:
                 active = 0;
+                window.location.hash = TabIDs[0];
                 break;
         }
 
