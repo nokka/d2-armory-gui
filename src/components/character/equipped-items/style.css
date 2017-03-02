@@ -47,6 +47,10 @@
     border: 1px solid #948065;
 }
 
+.item.inv-item:hover {
+    border: 1px solid #000;
+}
+
 /* Helm location */
 .item.location-1, .item-backdrop.location-1 {
     position: absolute;
@@ -308,7 +312,7 @@
 @media (max-width: 767px) {
 
     .item.location-4, .item-backdrop.location-4 {
-        
+
     }
 
 }
