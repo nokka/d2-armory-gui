@@ -170,7 +170,7 @@ export default class Item extends React.Component {
     getNrOfSockets() {
         var socketed = null;
         if(this.state.item.socketed === 1) {
-            socketed = `Socketed (${this.state.item.nr_of_items_in_sockets})`;
+            socketed = `Socketed (${this.state.item.total_nr_of_sockets})`;
         }
 
         return (
