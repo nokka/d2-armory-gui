@@ -79,6 +79,7 @@ module.exports = {
         // tell the merger not to merge this attribute.
         switch(id) {
             case 107:
+            case 188:
                 return -1;
             default:
                 break;
