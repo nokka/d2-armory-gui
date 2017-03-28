@@ -52,6 +52,18 @@ h1 {
 h1.char-name {
     margin: 0px;
     text-align: center;
+    &.hardcore {
+        font-size: 14px;
+        color: #9c0e06;
+    }
+    &.classic {
+        font-size: 14px;
+        color: #d6b665;
+    }
+    &.hc-dead {
+        font-size: 14px;
+        color: #9c0e06;
+    }
 }
 
 h2 {

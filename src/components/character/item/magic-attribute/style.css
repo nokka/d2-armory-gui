@@ -2,6 +2,10 @@ p.magic-property {
     color: #5050ab;
 }
 
+p.unidentified {
+    color: #b04335;
+}
+
 .set-property .magic-property {
     color: #19fa00;
 }

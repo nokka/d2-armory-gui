@@ -193,6 +193,20 @@ export default class Item extends React.Component {
         );
     }
 
+    getUnidentified() {
+        var unid = null;
+
+        if(this.state.item.identified === 0) {
+            unid = "(Unidentified)";
+        }
+
+        return (
+            <div>
+                <p className="unidentified">{unid}</p>
+            </div>
+        );
+    }
+
     getItemImage() {
         var itemImage = null;
         if(this.state.item.multiple_pictures === 1) {
@@ -250,6 +264,7 @@ export default class Item extends React.Component {
         //var setAttributes = this.getSetAttributes();
         var nrOfSockets = this.getNrOfSockets();
         var ethereal = this.getEthereal();
+        var isUnidentified = this.getUnidentified();
 
         return (
             <div>
@@ -259,6 +274,7 @@ export default class Item extends React.Component {
                 {magicAttributes}
                 {nrOfSockets}
                 {ethereal}
+                {isUnidentified}
             </div>
         );
     }

@@ -75,6 +75,7 @@ export default class AllocatedSkills extends React.Component {
     }
 
     loadCharacter() {
+
         fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
             if (response.status === 404) {
@@ -221,6 +222,9 @@ export default class AllocatedSkills extends React.Component {
                     <Cell col={6} tablet={12} phone={12}>
                         <h2 className="char-class">({this.state.header.level}) {this.state.header.class}</h2>
                         <h1 className="char-name">{this.state.header.name}</h1>
+                        {this.state.header.status.expansion === false && <h1 className="char-name classic">Classic</h1>}
+                        {this.state.header.status.hardcore === true && <h1 className="char-name hardcore">Hardcore</h1>}
+                        {(this.state.header.status.hardcore === true && this.state.header.status.died === true) && <h1 className="char-name hc-dead">Dead</h1>}
                     </Cell>
 
 
