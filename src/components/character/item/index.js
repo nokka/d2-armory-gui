@@ -109,17 +109,25 @@ export default class Item extends React.Component {
 
         var attributes = [];
 
-        if(this.state.item.magic_attributes !== null) {
-            Merger.merge(attributes, this.state.item.magic_attributes);
+        // This is one mother fucker of a problem, if we don't dereference the item
+        // by making it into a string, and then parsing it back into an object,
+        // the merger will mutate the original items magic attributes, due to javascript
+        // sending everything as a reference, no matter how many times we clone it or
+        // assign it to another variable, javascript will still have a pointer to it,
+        // and mutate it, thus ruining our lives.
+        var clone = (JSON.parse(JSON.stringify(this.state.item)));
+
+        if(clone.magic_attributes !== null) {
+            Merger.merge(attributes, clone.magic_attributes);
         }
 
-        if(this.state.item.runeword_attributes !== null) {
-            Merger.merge(attributes, this.state.item.runeword_attributes);
+        if(clone.runeword_attributes !== null) {
+            Merger.merge(attributes, clone.runeword_attributes);
         }
 
-        if(this.state.item.socketed_items !== null) {
-            for(var i = 0; i < this.state.item.socketed_items.length; i++) {
-                Merger.merge(attributes, this.state.item.socketed_items[i].magic_attributes);
+        if(clone.socketed_items !== null) {
+            for(var i = 0; i < clone.socketed_items.length; i++) {
+                Merger.merge(attributes, clone.socketed_items[i].magic_attributes);
             }
         }
 

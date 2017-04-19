@@ -78,6 +78,7 @@ module.exports = {
         // and up with a non existing skill id, so we'll just return -1 to
         // tell the merger not to merge this attribute.
         switch(id) {
+            case 97:
             case 107:
             case 188:
                 return -1;

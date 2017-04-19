@@ -31,7 +31,7 @@ const TabIDs = {
     3: '#cube'
 };
 
-export default class AllocatedSkills extends React.Component {
+export default class Character extends React.Component {
 
     state = {
         header: null,
@@ -108,6 +108,12 @@ export default class AllocatedSkills extends React.Component {
                 // the character level way down the view hierarchy.
                 window.char_level = response.character.d2s.header.level;
 
+                let anyaQuests = [
+                    response.character.d2s.header.quests_normal.act_v.prison_of_ice,
+                    response.character.d2s.header.quests_nm.act_v.prison_of_ice,
+                    response.character.d2s.header.quests_hell.act_v.prison_of_ice,
+                ]
+
                 this.setState({
                     header: response.character.d2s.header,
                     attributes: response.character.d2s.attributes,
@@ -117,6 +123,7 @@ export default class AllocatedSkills extends React.Component {
                     golem_item: response.character.d2s.golem_item,
                     is_dead: response.character.d2s.is_dead,
                     last_parsed: response.character.last_parsed,
+                    anya_quests: anyaQuests,
                     error_occurred: false
                 });
             }
@@ -237,7 +244,7 @@ export default class AllocatedSkills extends React.Component {
 
                 </Grid>
                 <Grid className="character-sheet profile-low">
-                    <Attributes data={{class: this.state.header.class, attributes: this.state.attributes, equipped: this.state.items.equipped, inventory: this.state.items.inventory}}/>
+                    <Attributes data={{class: this.state.header.class, attributes: this.state.attributes, equipped: this.state.items.equipped, inventory: this.state.items.inventory, anya_quests: this.state.anya_quests, expansion: this.state.header.status.expansion}}/>
                     <Skills data={this.state.skills}/>
                 </Grid>
                 {this.state.merc_items !== null && <Grid className="character-sheet merc"><Merc data={this.state.merc_items}/></Grid>}

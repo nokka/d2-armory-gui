@@ -35,8 +35,13 @@
     width: 50%;
 }
 
+
+.attributes small {
+    font-size: 12px;
+}
+
 /* Resources */
-.attributes ul.resources {
+.attributes ul.resources, .attributes ul.resistances {
     height: 50px;
     padding-bottom: 25px;
 }
@@ -54,6 +59,13 @@
     display: block;
     height: 50px;
     width: 50%;
+    float: left;
+}
+
+.resistances li {
+    display: block;
+    height: 50px;
+    width: 25%;
     float: left;
 }
 
@@ -80,4 +92,20 @@
 
 .globe.mana {
     background: #201c91;
+}
+
+.fire-res {
+    color: #c25353;
+}
+
+.cold-res {
+    color: #657acf;
+}
+
+.light-res {
+    color: #fae675;
+}
+
+.poison-res {
+    color: #19fa00;
 }

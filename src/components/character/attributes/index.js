@@ -13,13 +13,25 @@ export default class Attributes extends React.Component {
     constructor(props) {
         super(props);
 
+        const resistanceCap = 75;
+        const hellExpansionPenalty = 100;
+        const hellClassicPenalty = 50;
+
         var extraAttributes = {
                 strength: 0,
                 energy: 0,
                 dexterity: 0,
                 vitality: 0,
                 max_hp: 0,
-                max_mana: 0
+                max_mana: 0,
+                fire_res: 0,
+                cold_res: 0,
+                light_res: 0,
+                poison_res: 0,
+                max_fire_res: 0,
+                max_cold_res: 0,
+                max_light_res: 0,
+                max_poison_res: 0
         };
 
         if(props.data.equipped.length > 0) {
@@ -64,8 +76,38 @@ export default class Attributes extends React.Component {
         props.data.attributes.dexterity += extraAttributes.dexterity;
         props.data.attributes.vitality += extraAttributes.vitality;
 
+        // Calculate resistances in accordance to Anya quests and difficulty penalties.
+        props.data.anya_quests.map(function(q) {
+            if(q.consumed_scroll) {
+                extraAttributes.fire_res += 10;
+                extraAttributes.cold_res += 10;
+                extraAttributes.light_res += 10;
+                extraAttributes.poison_res += 10;
+            }
+            return true;
+        });
+
+        // Make sure we reduce the correct amount of resistances for hell.
+        var penalty = hellClassicPenalty;
+        if(props.data.expansion === true) {
+            penalty = hellExpansionPenalty;
+        }
+
+        extraAttributes.fire_res -= penalty;
+        extraAttributes.cold_res -= penalty;
+        extraAttributes.light_res -= penalty;
+        extraAttributes.poison_res -= penalty;
+
         this.state = {
-            attributes: props.data.attributes
+            attributes: props.data.attributes,
+            fire_res: extraAttributes.fire_res,
+            cold_res: extraAttributes.cold_res,
+            light_res: extraAttributes.light_res,
+            poison_res: extraAttributes.poison_res,
+            max_fire_res: resistanceCap+extraAttributes.max_fire_res,
+            max_cold_res:resistanceCap+extraAttributes.max_cold_res,
+            max_light_res: resistanceCap+extraAttributes.max_light_res,
+            max_poison_res: resistanceCap+extraAttributes.max_poison_res,
         };
     }
 
@@ -85,6 +127,36 @@ export default class Attributes extends React.Component {
                     <li>
                         <div className="mana globe"><span>{this.state.attributes.max_mana}</span></div>
                         <span className="resource-label">Mana</span>
+                    </li>
+                </ul>
+                <ul className="attribute-list">
+                    <li>
+                        <span className="attribute-label">Fire Resistance</span>
+                        <span className="attribute-value">
+                            <small className="fire-res">{this.state.fire_res}</small>
+                            <small>/{this.state.max_fire_res}</small>
+                        </span>
+                    </li>
+                    <li>
+                        <span className="attribute-label">Cold Resistance</span>
+                        <span className="attribute-value">
+                            <small className="cold-res">{this.state.cold_res}</small>
+                            <small>/{this.state.max_cold_res}</small>
+                        </span>
+                    </li>
+                    <li>
+                        <span className="attribute-label">Lightning Resistance</span>
+                        <span className="attribute-value">
+                            <small className="light-res">{this.state.light_res}</small>
+                            <small>/{this.state.max_light_res}</small>
+                        </span>
+                    </li>
+                    <li>
+                        <span className="attribute-label">Poison Resistance</span>
+                        <span className="attribute-value">
+                            <small className="poison-res">{this.state.poison_res}</small>
+                            <small>/{this.state.max_poison_res}</small>
+                        </span>
                     </li>
                 </ul>
                 <ul className="attribute-list">
