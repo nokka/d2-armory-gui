@@ -76,7 +76,8 @@ export default class Character extends React.Component {
 
     loadCharacter() {
 
-        fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        //fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`http://localhost:8090/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
             if (response.status === 404) {
                 throw new Error("Not found");

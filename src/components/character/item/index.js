@@ -115,6 +115,7 @@ export default class Item extends React.Component {
         // sending everything as a reference, no matter how many times we clone it or
         // assign it to another variable, javascript will still have a pointer to it,
         // and mutate it, thus ruining our lives.
+
         var clone = (JSON.parse(JSON.stringify(this.state.item)));
 
         if(clone.magic_attributes !== null) {

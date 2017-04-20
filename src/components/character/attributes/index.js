@@ -16,6 +16,7 @@ export default class Attributes extends React.Component {
         const resistanceCap = 75;
         const hellExpansionPenalty = 100;
         const hellClassicPenalty = 50;
+        const scrollOfResistance = 10;
 
         var extraAttributes = {
                 strength: 0,
@@ -79,10 +80,10 @@ export default class Attributes extends React.Component {
         // Calculate resistances in accordance to Anya quests and difficulty penalties.
         props.data.anya_quests.map(function(q) {
             if(q.consumed_scroll) {
-                extraAttributes.fire_res += 10;
-                extraAttributes.cold_res += 10;
-                extraAttributes.light_res += 10;
-                extraAttributes.poison_res += 10;
+                extraAttributes.fire_res += scrollOfResistance;
+                extraAttributes.cold_res += scrollOfResistance;
+                extraAttributes.light_res += scrollOfResistance;
+                extraAttributes.poison_res += scrollOfResistance;
             }
             return true;
         });

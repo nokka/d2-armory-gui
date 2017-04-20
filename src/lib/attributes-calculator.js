@@ -67,7 +67,6 @@ export default {
                 // Fire res.
                 case 39:
                     if(0 in list[i].values) {
-                        console.log(list[i].values[0]);
                         attributes.fire_res += list[i].values[0];
                     }
                     break;
