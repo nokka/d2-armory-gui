@@ -27,9 +27,21 @@ body {
     }
 }
 
+@media (min-width: 1920px) {
+    .app {
+        background-image: url("assets/bg-full.jpg");
+    }
+}
+
 @media (max-width: 1680px) {
     .app {
         background-image: url("assets/bg-1680.jpg");
+    }
+}
+
+@media (max-width: 1440px) {
+    .app {
+        background-image: url("assets/bg.jpg");
     }
 }
 
