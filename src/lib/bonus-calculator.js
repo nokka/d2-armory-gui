@@ -4,6 +4,7 @@ module.exports = {
     calculate: function(bonuses, list) {
 
         for(var i = 0; i < list.length; i++) {
+
             switch(list[i].id) {
 
                 // Damage reduction.

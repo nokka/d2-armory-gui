@@ -76,8 +76,7 @@ export default class Character extends React.Component {
 
     loadCharacter() {
 
-        //fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
-        fetch(`http://localhost:8090/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
             if (response.status === 404) {
                 throw new Error("Not found");
@@ -115,6 +114,10 @@ export default class Character extends React.Component {
                     response.character.d2s.header.quests_hell.act_v.prison_of_ice,
                 ]
 
+                // Make the last played date more readable for every locale.
+                let lastPlayed = response.character.d2s.header.last_played.replace("CEST", "");
+                let lastPlayedLocale = new Date(lastPlayed).toLocaleString();
+
                 this.setState({
                     header: response.character.d2s.header,
                     attributes: response.character.d2s.attributes,
@@ -125,7 +128,8 @@ export default class Character extends React.Component {
                     is_dead: response.character.d2s.is_dead,
                     last_parsed: response.character.last_parsed,
                     anya_quests: anyaQuests,
-                    error_occurred: false
+                    error_occurred: false,
+                    last_played: lastPlayedLocale
                 });
             }
             else {
@@ -225,7 +229,9 @@ export default class Character extends React.Component {
                 </Grid>
                 <Grid className="character-sheet profile-top">
                     <Cell col={6} tablet={12} phone={12}>
-                        &nbsp;
+                        <div className="last-online">
+                            <h4>Last online:</h4><p>{this.state.last_played}</p>
+                        </div>
                     </Cell>
                     <Cell col={6} tablet={12} phone={12}>
                         <h2 className="char-class">({this.state.header.level}) {this.state.header.class}</h2>

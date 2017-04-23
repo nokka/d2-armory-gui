@@ -91,7 +91,7 @@ export default class GearBonuses extends React.Component {
                         null
                     }
                     { (this.state.bonuses.dr > 0) ?
-                        <li className="dr">Damage reduction: <span className="bonus-value">{this.state.bonuses.dr}%</span></li>
+                        <li className="dr">Damage reduced by: <span className="bonus-value">{this.state.bonuses.dr}%</span></li>
                         :
                         null
                     }

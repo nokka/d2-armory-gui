@@ -120,7 +120,7 @@ export default class Attributes extends React.Component {
         return (
             <Cell className="attributes" col={4} tablet={12} phone={12}>
                 <h3 className="underlined">Attributes</h3>
-                <ul className="resources">
+                <ul className="resources globes">
                     <li>
                         <div className="health globe"><span>{this.state.attributes.max_hp}</span></div>
                         <span className="resource-label">Life</span>
@@ -130,6 +130,7 @@ export default class Attributes extends React.Component {
                         <span className="resource-label">Mana</span>
                     </li>
                 </ul>
+                <h4 className="underlined">Hell resistances</h4>
                 <ul className="attribute-list">
                     <li>
                         <span className="attribute-label">Fire Resistance</span>
@@ -160,12 +161,14 @@ export default class Attributes extends React.Component {
                         </span>
                     </li>
                 </ul>
+                <h4 className="underlined">Core attributes</h4>
                 <ul className="attribute-list">
                     <li><span className="attribute-label">Strength</span><span className="attribute-value">{this.state.attributes.strength}</span></li>
                     <li><span className="attribute-label">Dexterity</span><span className="attribute-value">{this.state.attributes.dexterity}</span></li>
                     <li><span className="attribute-label">Vitality</span><span className="attribute-value">{this.state.attributes.vitality}</span></li>
                     <li><span className="attribute-label">Energy</span><span className="attribute-value">{this.state.attributes.energy}</span></li>
                 </ul>
+                <h4 className="underlined">Other</h4>
                 <ul className="attribute-list">
                     <li><span className="attribute-label">Experience</span><span className="attribute-value">{this.toLocaleString(this.state.attributes.experience)}</span></li>
                     <li><span className="attribute-label">Gold</span><span className="attribute-value">{this.toLocaleString(this.state.attributes.gold)}</span></li>

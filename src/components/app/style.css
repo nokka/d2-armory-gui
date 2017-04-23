@@ -83,6 +83,12 @@ h3 {
     font-size: 16px;
 }
 
+h4 {
+    font-size: 12px;
+    margin-top: 7px;
+    margin-bottom: 0px;
+}
+
 .underlined {
     border-bottom: 2px solid #312a1e;
 }
