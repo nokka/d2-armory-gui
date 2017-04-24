@@ -229,7 +229,7 @@ export default class Character extends React.Component {
                 <Grid className="character-sheet profile-top">
                     <Cell col={6} tablet={12} phone={12}>
                         <div className="last-online">
-                            <h4>Last online:</h4><p>{this.state.last_played}</p>
+                            
                         </div>
                     </Cell>
                     <Cell col={6} tablet={12} phone={12}>
