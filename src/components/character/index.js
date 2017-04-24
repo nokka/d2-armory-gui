@@ -115,8 +115,7 @@ export default class Character extends React.Component {
                 ]
 
                 // Make the last played date more readable for every locale.
-                let lastPlayed = response.character.d2s.header.last_played.replace("CEST", "");
-                let lastPlayedLocale = new Date(lastPlayed).toLocaleString();
+                var lastPlayedLocale = new Date(response.character.d2s.header.last_played).toLocaleString();
 
                 this.setState({
                     header: response.character.d2s.header,
