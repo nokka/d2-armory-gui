@@ -115,7 +115,7 @@ export default class Character extends React.Component {
                 ]
 
                 // Make the last played date more readable for every locale.
-                var lastPlayedLocale = new Date(response.character.d2s.header.last_played).toLocaleString();
+                var lastPlayedLocale = new Date((response.character.d2s.header.last_played*1000)).toLocaleString();
 
                 this.setState({
                     header: response.character.d2s.header,
@@ -229,7 +229,7 @@ export default class Character extends React.Component {
                 <Grid className="character-sheet profile-top">
                     <Cell col={6} tablet={12} phone={12}>
                         <div className="last-online">
-                            
+                            <h4>Last online:</h4><p>{this.state.last_played}</p>
                         </div>
                     </Cell>
                     <Cell col={6} tablet={12} phone={12}>
