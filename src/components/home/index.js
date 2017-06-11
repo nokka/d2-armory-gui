@@ -1,4 +1,5 @@
 import React from 'react'
+import { Grid, Icon, Cell } from 'react-mdl'
 import './style.css'
 
 export default class Home extends React.Component {
@@ -33,6 +34,14 @@ export default class Home extends React.Component {
 
     render() {
         return <div className="home">
+            <Grid className="menu-grid">
+                <Cell col={12} tablet={12} phone={12}>
+                    <ul className="menu">
+                        <li><a title="Checkout the ladder" href="https://ladder.slashgaming.net/exp/overall"><Icon name="timeline" /><span>LADDER</span></a></li>
+                        <li><a title="Slash subreddit" href="https://reddit.com/r/slashdiablo"><Icon name="comment" /><span>REDDIT</span></a></li>
+                    </ul>
+                </Cell>
+            </Grid>
             <h1>The armory</h1>
             <p>This is where you can search all the Slash characters and get a detailed view of their skills, items, stats and mercenary.</p>
             <div className="searcher">

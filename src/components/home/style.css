@@ -1,12 +1,22 @@
 .home {
+
     width: 400px;
-    height: 230px;
     margin: 10% auto;
     padding: 15px 50px 50px 50px;
     background: rgba(0,0,0, 0.5);
 
     h1 {
         margin: 10px 0px 15px 0px;
+    }
+
+    .menu-grid {
+        width: auto;
+        padding: 0px;
+        margin-bottom: 20px;
+
+        .mdl-cell {
+            margin: 0px;
+        }
     }
 
     .searcher {
@@ -68,6 +78,13 @@
 
         h1 {
             text-align: center;
+        }
+        .menu-grid {
+            height: auto;
+
+            li {
+                width: 50%;
+            }
         }
 
         .searcher {
