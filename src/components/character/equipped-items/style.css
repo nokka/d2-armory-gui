@@ -313,70 +313,70 @@
 
     /* Helm location */
     .item.location-1, .item-backdrop.location-1 {
-        left: 143px;
+        left: 138px;
     }
 
     /* Amulet location */
     .item.location-2, .item-backdrop.location-2 {
-        left: 211px;
+        left: 206px;
     }
 
     /* Chest location */
     .item.location-3, .item-backdrop.location-3 {
-        left: 143px;
+        left: 138px;
     }
 
     /* Left hand weapon location */
     .item.location-4, .item-backdrop.location-4 {
-        left: 30px;
+        left: 25px;
     }
 
     /* Right hand weapon location */
     .item.location-5, .item-backdrop.location-5 {
-        left: 258px;
+        left: 253px;
     }
 
     /* Left ring location */
     .item.location-6, .item-backdrop.location-6 {
-        left: 98px;
+        left: 93px;
     }
 
     /* Right ring location */
     .item.location-7, .item-backdrop.location-7 {
-        left: 216px;
+        left: 211px;
     }
 
     /* Belt location */
     .item.location-8, .item-backdrop.location-8 {
-        left: 140px;
+        left: 135px;
     }
 
     /* Boots location */
     .item.location-9, .item-backdrop.location-9 {
-        left: 258px;
+        left: 253px;
     }
 
     /* Gloves location */
     .item.location-10, .item-backdrop.location-10 {
-        left: 30px;
+        left: 25px;
     }
 
     /* Alternative left hand weapon location */
     .item.location-11, .item-backdrop.location-11 {
-        left: 30px;
+        left: 25px;
     }
 
     /* Alterntive right hand weapon location */
     .item.location-12, .item-backdrop.location-12 {
-        left: 258px;
+        left: 253px;
     }
 
     .left-swap {
-        left: 3px;
+        left: 0px;
     }
 
     .right-swap {
-        left: 232px;
+        left: 227px;
     }
 
 }

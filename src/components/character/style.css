@@ -254,6 +254,10 @@ li.aura::before {
 
 @media (max-width: 767px) {
 
+    .last-online {
+        padding-left: 20px;
+    }
+    
     .visible-mobile {
         display: inline-block;
         vertical-align: -6px;

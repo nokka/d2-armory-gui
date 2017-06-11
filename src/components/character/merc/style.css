@@ -12,6 +12,7 @@
     min-height: 250px;
     float: left;
 }
+
 .merc-items {
     width: 45%;
     min-height: 250px;
@@ -52,5 +53,16 @@
     }
     .merc-items {
         width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .merc-inner {
+        padding: 0px;
+    }
+
+    .merc-bonuses {
+        width: auto;
+        padding: 0px 20px 0px 20px;
     }
 }

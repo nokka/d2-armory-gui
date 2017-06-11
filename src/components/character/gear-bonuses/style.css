@@ -27,3 +27,9 @@
 .gear-bonuses .bonus-value {
     color: #d0ccff;
 }
+
+@media (max-width: 767px) {
+    .gear-bonuses {
+        padding-left: 20px;
+    }
+}
