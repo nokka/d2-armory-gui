@@ -131,4 +131,8 @@
     padding: 0px;
     line-height: 16px;
     color: #c2c2c2;
+
+    .increased-true {
+        color: #5050ab;
+    }
 }

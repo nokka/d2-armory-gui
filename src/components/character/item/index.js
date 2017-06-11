@@ -10,14 +10,43 @@ import RuneNames from './rune-names'
 import MagicAttribute from './magic-attribute'
 import SocketedItem from './socketed-item'
 import Merger from './attribute-merger'
+import DisplayCalculator from './display-calculator'
 
 export default class Item extends React.Component {
 
     constructor(props) {
         super(props);
 
+        // We'll be merging the item attributes in the constructor, because
+        // we want to use them through out this component, without having to
+        // loop over them more than once.
+        var attributes = [];
+
+        // This is one mother fucker of a problem, if we don't dereference the item
+        // by making it into a string, and then parsing it back into an object,
+        // the merger will mutate the original items magic attributes, due to javascript
+        // sending everything as a reference, no matter how many times we clone it or
+        // assign it to another variable, javascript will still have a pointer to it,
+        // and mutate it, thus ruining our lives.
+        var clone = (JSON.parse(JSON.stringify(props.data)));
+
+        if(clone.magic_attributes !== null) {
+            Merger.merge(attributes, clone.magic_attributes);
+        }
+
+        if(clone.runeword_attributes !== null) {
+            Merger.merge(attributes, clone.runeword_attributes);
+        }
+
+        if(clone.socketed_items !== null) {
+            for(var i = 0; i < clone.socketed_items.length; i++) {
+                Merger.merge(attributes, clone.socketed_items[i].magic_attributes);
+            }
+        }
+
         this.state = {
-            item: props.data
+            item: props.data,
+            mergedAttributes: attributes
         };
     }
 
@@ -81,9 +110,38 @@ export default class Item extends React.Component {
     }
 
     getStandardAttributes() {
+
+        // Check for enhancers that will alter the defense or weapon
+        var enhancers = DisplayCalculator.calculate(this.state.mergedAttributes);
+
         var defense = null;
+        var defenseIncreased = false;
         if(this.state.item.hasOwnProperty("defense_rating")) {
-            defense = `Defense: ${this.state.item.defense_rating}`;
+            var defenseRating = Math.floor(this.state.item.defense_rating * (1 + (enhancers.enhancedDefense/100)) + enhancers.flatDefense);
+            defenseIncreased = defenseRating > this.state.item.defense_rating;
+            defense = `${defenseRating}`;
+        }
+
+        var weaponDamage = null;
+        var twoHandWeaponDamage = null;
+        var damageIncreased = false;
+        if(this.state.item.hasOwnProperty('base_damage')) {
+
+            // One hand weapon damage.
+            if(this.state.item.base_damage.hasOwnProperty('min')) {
+                var displayedMinDamage = Math.floor(this.state.item.base_damage.min * (1 + (enhancers.minEnhancedDamage/100)) + enhancers.flatOneHandMin);
+                var displayedMaxDamage = Math.floor(this.state.item.base_damage.max * (1 + (enhancers.maxEnhancedDamage/100)) + enhancers.flatOneHandMax);
+                damageIncreased = displayedMinDamage > this.state.item.base_damage.min;
+                weaponDamage = `${displayedMinDamage} to ${displayedMaxDamage}`;
+            }
+
+            // Two hand weapon damage.
+            if(this.state.item.base_damage.hasOwnProperty('twohand_min')) {
+                var displayedTwoHandMinDamage = Math.floor(this.state.item.base_damage.twohand_min * (1 + (enhancers.minEnhancedDamage/100)) + enhancers.flatTwoHandMin);
+                var displayedTwohandMaxDamage = Math.floor(this.state.item.base_damage.twohand_max * (1 + (enhancers.maxEnhancedDamage/100)) + enhancers.flatTwoHandMax);
+                damageIncreased = displayedTwoHandMinDamage > this.state.item.base_damage.twohand_min;
+                twoHandWeaponDamage = `${displayedTwoHandMinDamage} to ${displayedTwohandMaxDamage}`;
+            }
         }
 
         var durability = null;
@@ -98,7 +156,23 @@ export default class Item extends React.Component {
 
         return (
             <div>
-                <p>{defense}</p>
+                { (defense !== null) ?
+                    <p>Defense: <span className={'increased-'+defenseIncreased}>{defense}</span></p>
+                    :
+                    null
+                }
+
+                { (weaponDamage !== null) ?
+                    <p>One-hand damage: <span className={'increased-'+damageIncreased}>{weaponDamage}</span></p>
+                    :
+                    null
+                }
+
+                { (twoHandWeaponDamage !== null) ?
+                    <p>Two-hand damage: <span className={'increased-'+damageIncreased}>{twoHandWeaponDamage}</span></p>
+                    :
+                    null
+                }
                 <p>{durability}</p>
                 <p>{quantity}</p>
             </div>
@@ -107,34 +181,10 @@ export default class Item extends React.Component {
 
     getMagicAttributes() {
 
-        var attributes = [];
-
-        // This is one mother fucker of a problem, if we don't dereference the item
-        // by making it into a string, and then parsing it back into an object,
-        // the merger will mutate the original items magic attributes, due to javascript
-        // sending everything as a reference, no matter how many times we clone it or
-        // assign it to another variable, javascript will still have a pointer to it,
-        // and mutate it, thus ruining our lives.
-        var clone = (JSON.parse(JSON.stringify(this.state.item)));
-
-        if(clone.magic_attributes !== null) {
-            Merger.merge(attributes, clone.magic_attributes);
-        }
-
-        if(clone.runeword_attributes !== null) {
-            Merger.merge(attributes, clone.runeword_attributes);
-        }
-
-        if(clone.socketed_items !== null) {
-            for(var i = 0; i < clone.socketed_items.length; i++) {
-                Merger.merge(attributes, clone.socketed_items[i].magic_attributes);
-            }
-        }
-
         return (
             <div>
-            { (attributes.length > 0) ?
-                attributes.map((props, i) =>
+            { (this.state.mergedAttributes.length > 0) ?
+                this.state.mergedAttributes.map((props, i) =>
                     <MagicAttribute key={`${this.state.item.id}-socketed-${props.id}-${i}`} data={props}/>
                 )
                 :
