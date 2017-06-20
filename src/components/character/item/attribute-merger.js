@@ -11,6 +11,19 @@ module.exports = {
             if(index >= 0) {
 
                 switch(list[i].id) {
+                    case 17:
+                        // This field is for Enhanced damage, that apparantly has two values, one for
+                        // min damage, and one for max, we'll calculate them correctly even though they always
+                        // have the same value.
+                        if(0 in attributes[index].values) {
+                            attributes[index].values[0] += list[i].values[0];
+                            list.merged = true;
+                        }
+                        if(1 in attributes[index].values) {
+                            attributes[index].values[1] += list[i].values[1];
+                            list.merged = true;
+                        }
+                        break;
                     case 57:
                         // This is a field for poison damage over time, to compute the amount
                         // of damage shown in the game, multiply the first field by

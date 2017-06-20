@@ -43,7 +43,7 @@ export default class Item extends React.Component {
                 Merger.merge(attributes, clone.socketed_items[i].magic_attributes);
             }
         }
-
+        
         this.state = {
             item: props.data,
             mergedAttributes: attributes
@@ -129,16 +129,16 @@ export default class Item extends React.Component {
 
             // One hand weapon damage.
             if(this.state.item.base_damage.hasOwnProperty('min')) {
-                var displayedMinDamage = Math.floor(this.state.item.base_damage.min * (1 + (enhancers.minEnhancedDamage/100)) + enhancers.flatOneHandMin);
-                var displayedMaxDamage = Math.floor(this.state.item.base_damage.max * (1 + (enhancers.maxEnhancedDamage/100)) + enhancers.flatOneHandMax);
+                var displayedMinDamage = Math.floor(this.state.item.base_damage.min * Number((1 + (enhancers.minEnhancedDamage/100)).toFixed(2)) + enhancers.flatOneHandMin);
+                var displayedMaxDamage = Math.floor(this.state.item.base_damage.max * Number((1 + (enhancers.maxEnhancedDamage/100)).toFixed(2)) + enhancers.flatOneHandMax);
                 damageIncreased = displayedMinDamage > this.state.item.base_damage.min;
                 weaponDamage = `${displayedMinDamage} to ${displayedMaxDamage}`;
             }
 
             // Two hand weapon damage.
             if(this.state.item.base_damage.hasOwnProperty('twohand_min')) {
-                var displayedTwoHandMinDamage = Math.floor(this.state.item.base_damage.twohand_min * (1 + (enhancers.minEnhancedDamage/100)) + enhancers.flatTwoHandMin);
-                var displayedTwohandMaxDamage = Math.floor(this.state.item.base_damage.twohand_max * (1 + (enhancers.maxEnhancedDamage/100)) + enhancers.flatTwoHandMax);
+                var displayedTwoHandMinDamage = Math.floor(this.state.item.base_damage.twohand_min * Number((1 + (enhancers.minEnhancedDamage/100)).toFixed(2)) + enhancers.flatTwoHandMin);
+                var displayedTwohandMaxDamage = Math.floor(this.state.item.base_damage.twohand_max * Number((1 + (enhancers.maxEnhancedDamage/100)).toFixed(2)) + enhancers.flatTwoHandMax);
                 damageIncreased = displayedTwoHandMinDamage > this.state.item.base_damage.twohand_min;
                 twoHandWeaponDamage = `${displayedTwoHandMinDamage} to ${displayedTwohandMaxDamage}`;
             }
