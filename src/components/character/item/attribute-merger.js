@@ -92,6 +92,7 @@ module.exports = {
         // tell the merger not to merge this attribute.
         switch(id) {
             case 97:
+            case 98:
             case 107:
             case 188:
                 return -1;

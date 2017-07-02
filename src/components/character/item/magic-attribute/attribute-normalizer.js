@@ -59,6 +59,17 @@ module.exports = {
                 }
                 break;
 
+            case 98:
+                // This property is only a visual effect, called NV state. This property
+                // Only appears on imported charms. It shows a +1 to a certain visual effect
+                // e.g. Whirlwind.
+
+                if(!property.normalized) {
+                    property.values[0] = Skills.nvStates[property.values[0]];
+                    property.normalized = true;
+                }
+                break;
+
             case 107:
                 // Number of levels to a certain class specific skill, e.g.
                 // +3 to Lightning Fury. Index 0 is the skill id, and index 1
