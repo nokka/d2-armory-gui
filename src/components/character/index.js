@@ -76,7 +76,7 @@ export default class Character extends React.Component {
 
     loadCharacter() {
 
-        fetch(`https://armory.slashgaming.net/retrieving/v1/character?name=${this.props.params.name}`)
+        fetch(`http://armory.slashdiablo.net/retrieving/v1/character?name=${this.props.params.name}`)
         .then((response) => {
             if (response.status === 404) {
                 throw new Error("Not found");
@@ -202,7 +202,7 @@ export default class Character extends React.Component {
                 <Grid className="menu-grid">
                     <Cell col={12} tablet={12} phone={12}>
                         <ul className="menu">
-                            <li><a title="Checkout the ladder" href="https://ladder.slashgaming.net/exp/overall"><Icon name="timeline" /><span>LADDER</span></a></li>
+                            <li><a title="Checkout the ladder" href="http://ladder.slashdiablo.net/exp/overall"><Icon name="timeline" /><span>LADDER</span></a></li>
                             <li><a title="Search the armory" href="/"><Icon name="search" /><span>SEARCH</span></a></li>
                             <li><a title="Slash subreddit" href="https://reddit.com/r/slashdiablo"><Icon name="comment" /><span>REDDIT</span></a></li>
                         </ul>

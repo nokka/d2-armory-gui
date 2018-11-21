@@ -37,7 +37,7 @@ export default class Home extends React.Component {
             <Grid className="menu-grid">
                 <Cell col={12} tablet={12} phone={12}>
                     <ul className="menu">
-                        <li><a title="Checkout the ladder" href="https://ladder.slashgaming.net/exp/overall"><Icon name="timeline" /><span>LADDER</span></a></li>
+                        <li><a title="Checkout the ladder" href="http://ladder.slashdiablo.net/exp/overall"><Icon name="timeline" /><span>LADDER</span></a></li>
                         <li><a title="Slash subreddit" href="https://reddit.com/r/slashdiablo"><Icon name="comment" /><span>REDDIT</span></a></li>
                     </ul>
                 </Cell>
