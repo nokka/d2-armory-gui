@@ -1,5 +1,5 @@
 {
-  "name": "d2s-armory",
+  "name": "d2-armory-gui",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
