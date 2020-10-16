@@ -75,7 +75,7 @@ export default class Character extends React.Component {
 
   loadCharacter() {
     fetch(
-      `https://armory.slashdiablo.net/retrieving/v1/character?name=${this.props.params.name}`
+      process.env.API_URL + `/api/v1/characters?name=${this.props.params.name}`
     )
       .then((response) => {
         if (response.status === 404) {

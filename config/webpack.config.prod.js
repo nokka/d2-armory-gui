@@ -37,8 +37,12 @@ var publicPath = ensureSlash(homepagePathname, true);
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
 var publicUrl = ensureSlash(homepagePathname, false);
+// apiUrl resolves the backend API URL. For production '' is used
+// this makes the request go to the same domain and then NGINX is used
+// to route this to the backend on all routes on '/api'.
+var apiUrl = ''
 // Get environment variables to inject into our app.
-var env = getClientEnvironment(publicUrl);
+var env = getClientEnvironment(publicUrl, apiUrl);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -170,7 +174,7 @@ module.exports = {
   },
 
   // We use PostCSS for autoprefixing only.
-  postcss: function() {
+  postcss: function () {
     return [
       precss,
       autoprefixer({
