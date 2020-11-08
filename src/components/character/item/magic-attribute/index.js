@@ -18,7 +18,7 @@ export default class MagicAttribute extends React.Component {
         Normalizer.normalize(this.state.property);
 
         let rendered = this.state.property.name;
-        this.state.property.values.map(function(value, i) {
+        this.state.property.values.map(function (value, i) {
             return rendered = rendered.replace(`{${i}}`, value);
         });
 

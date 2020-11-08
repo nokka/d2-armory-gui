@@ -1,6 +1,6 @@
 html, body, #root {min-height: 100%;}
 body {
-    background: url("assets/bg-repeat.jpg");
+    background: url("assets/bg-repeat.jpg") #000;
     color: #FFEAD4;
     margin: 0;
     padding: 0;
