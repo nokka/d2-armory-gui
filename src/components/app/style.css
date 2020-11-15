@@ -64,6 +64,10 @@ h1 {
 h1.char-name {
     margin: 0px;
     text-align: center;
+    &.ladder {
+        font-size: 14px;
+        color: #957D65;
+    }
     &.hardcore {
         font-size: 14px;
         color: #9c0e06;

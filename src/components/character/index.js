@@ -283,6 +283,9 @@ export default class Character extends React.Component {
             {this.state.header.status.hardcore === true && (
               <h1 className="char-name hardcore">Hardcore</h1>
             )}
+            {this.state.header.status.ladder === true && (
+              <h1 className="char-name ladder">Ladder</h1>
+            )}
             {this.state.header.status.hardcore === true &&
               this.state.header.status.died === true && (
                 <h1 className="char-name hc-dead">Dead</h1>
