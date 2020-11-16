@@ -1,5 +1,7 @@
-# generated build folder
+# generated build artifacts
 build
+deploy
+armory-gui.zip
 
 # dependencies
 node_modules
