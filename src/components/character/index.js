@@ -14,6 +14,7 @@ import IronGolem from "./iron-golem";
 import GearBonuses from "./gear-bonuses";
 import Attributes from "./attributes";
 import Skills from "./skills";
+import Statistics from "./statistics";
 
 import "./style.css";
 
@@ -44,6 +45,7 @@ export default class Character extends React.Component {
     error_occurred: false,
     not_found: false,
     active_tab: 0,
+    statistics: null
   };
 
   componentDidMount() {
@@ -70,7 +72,43 @@ export default class Character extends React.Component {
     }
 
     this.setState({ active_tab: active });
+
+    // Load character data.
     this.loadCharacter();
+
+    // Load statistics about the character.
+    this.loadStatistics();
+  }
+
+  loadStatistics() {
+    fetch(
+      process.env.API_URL + `/api/v1/statistics?character=${this.props.params.name}`
+    )
+      .then((response) => {
+        if (response.status === 404) {
+          throw new Error("Not found");
+        } else if (response.status > 404) {
+          throw new Error("Something went terribly wrong");
+        }
+        return response.json();
+      })
+      .then((response) => {
+        this.setState({
+          statistics: response
+        });
+      })
+      .catch((e) => {
+        console.log("got statistics error")
+        if (e.message === "Not found") {
+          this.setState({
+            statistics_not_found: true,
+          });
+        } else {
+          this.setState({
+            statistics_error_occurred: true,
+          });
+        }
+      });
   }
 
   loadCharacter() {
@@ -311,6 +349,11 @@ export default class Character extends React.Component {
           {this.state.active_tab === 3 && <Cube data={this.state.items.cube} />}
         </Grid>
         <Grid className="character-sheet profile-low">
+
+          {this.state.statistics !== null && (
+            <Statistics data={this.state.statistics} />
+          )}
+
           <Attributes
             data={{
               class: this.state.header.class,
