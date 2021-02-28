@@ -34,11 +34,11 @@ export default class Bar extends React.Component {
             datasets: [
                 {
                     label: '',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
+                    backgroundColor: 'rgba(255,99,132,0.1)',
+                    borderColor: 'rgba(255,99,132,0.8)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgba(255,99,132,1.0)',
-                    hoverBorderColor: 'rgba(255,255,255,1)',
+                    hoverBackgroundColor: 'rgba(255,99,132,0.8)',
+                    hoverBorderColor: 'rgba(255,255,255,0.2)',
                     data: points,
                 }
             ]
@@ -46,11 +46,20 @@ export default class Bar extends React.Component {
 
         this.state = {
             dataset: dataset,
-            total_kills: props.data.total_kills
+            total_kills: props.data.total_kills,
+            nrDataPoints: points.length
         };
     }
 
     render() {
+        if (this.state.nrDataPoints === 0) {
+            return (
+                <div className="stats-msg">
+                    <h4>No data available</h4>
+                </div>
+            );
+        }
+
         return (
             <div>
                 <div className="total-kills">
@@ -66,12 +75,18 @@ export default class Bar extends React.Component {
                             scales: {
                                 yAxes: [{
                                     gridLines: {
-                                        //display: false,
-                                        color: 'rgba(87, 147, 150, 0.2)'
+                                        display: false
                                     },
                                     barPercentage: 0.1,
                                     categoryPercentage: 0.5,
                                     ticks: {
+                                        callback: function (value) {
+                                            if (value.length > 12) {
+                                                return value.substr(0, 12) + '...';
+                                            } else {
+                                                return value
+                                            }
+                                        },
                                         stepSize: 1,
                                         autoSkip: false,
                                         fontfamily: "'Roboto'",
@@ -84,28 +99,30 @@ export default class Bar extends React.Component {
                                 xAxes: [{
                                     position: 'top',
                                     gridLines: {
-                                        display: false,
-                                        color: 'rgba(87, 147, 150, 0.2)'
+                                        color: 'rgba(87, 147, 150, 0.1)'
                                     },
-                                    barPercentage: 0.5,
-                                    categoryPercentage: 0.5,
-                                    //barValueSpacing: 1,
-                                    //barDatasetSpacing: 0.1,
-                                    //barThickness: 5,
-                                    //maxBarThickness: 10,
-                                    // ticks: {
-                                    //     stepSize: 1,
-                                    //     //autoSkip: false,
-                                    //     maxRotation: 0,
-                                    //     minRotation: 0,
-                                    //     padding: 10,
-                                    //     fontSize: 10,
-                                    //     fontColor: "#a99877",
-                                    //     suggestedMin: 0,
-                                    //     beginAtZero: true
-                                    // }
+                                    ticks: {
+                                        maxRotation: 0,
+                                        minRotation: 0,
+                                        padding: 10,
+                                        fontSize: 10,
+                                        fontColor: "#a99877",
+                                        suggestedMin: 0,
+                                        beginAtZero: true
+                                    }
                                 }]
                             },
+                            tooltips: {
+                                displayColors: false,
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        return tooltipItem.xLabel;
+                                    },
+                                    title: function (tooltipItem, data) {
+                                        return;
+                                    }
+                                }
+                            }
                         }}
                     />
                 </div>

@@ -98,7 +98,6 @@ export default class Character extends React.Component {
         });
       })
       .catch((e) => {
-        console.log("got statistics error")
         if (e.message === "Not found") {
           this.setState({
             statistics_not_found: true,
@@ -350,8 +349,23 @@ export default class Character extends React.Component {
         </Grid>
         <Grid className="character-sheet profile-low">
 
+          {this.state.statistics === null &&
+            !this.state.statistics_not_found &&
+            !this.state.statistics_error_occurred && (
+              <div className="stats-msg">
+                <Spinner />
+                <h4>Loading character statistics</h4>
+              </div>
+            )}
+
           {this.state.statistics !== null && (
             <Statistics data={this.state.statistics} />
+          )}
+
+          {this.state.statistics_error_occurred && (
+            <div className="stats-msg">
+              <h4>Failed to load statistics</h4>
+            </div>
           )}
 
           <Attributes

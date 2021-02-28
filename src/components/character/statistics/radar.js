@@ -38,7 +38,7 @@ export default class RadarStats extends React.Component {
                     borderColor: 'rgba(255, 99, 132, 0.5)',
                     borderWidth: 1,
                     pointRadius: 3,
-                    pointBackgroundColor: 'rgba(255, 99, 132, 0.9)',
+                    pointBackgroundColor: 'rgba(255,99,132,0.8)',
                     data: points,
                 },
             ]
@@ -72,14 +72,19 @@ export default class RadarStats extends React.Component {
                                     ]
                                 },
                                 ticks: {
-                                    /*autoSkip: true,
-                                    stepSize: 1,
-                                    fontSize: 10,
-                                    fontfamily: "'Roboto'",
-                                    fontColor: "#a99877",
-                                    beginAtZero: true,*/
                                     backdropColor: "rgba(0, 0, 0, 0)",
                                     callback: function () { return "" }
+                                },
+                            },
+                            tooltips: {
+                                displayColors: false,
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        return tooltipItem.yLabel;
+                                    },
+                                    title: function (tooltipItem, data) {
+                                        return;
+                                    }
                                 }
                             }
                         }}
