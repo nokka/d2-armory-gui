@@ -56,7 +56,11 @@ export default class Statistics extends React.Component {
 
     getChart(chartType, difficultyTab, typeTab) {
         let Chart = chartType === 'bar' ? Bar : Radar
-        return <Chart type={this.types[typeTab]} data={this.state.data[this.difficulties[difficultyTab]]} key={`${chartType}-${difficultyTab}-${typeTab}`} />
+        return <Chart
+            type={this.types[typeTab]}
+            data={this.state.data[this.difficulties[difficultyTab]]}
+            key={`${chartType}-${difficultyTab}-${typeTab}`}
+        />
     }
 
     render() {
