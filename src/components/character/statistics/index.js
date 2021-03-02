@@ -64,20 +64,20 @@ export default class Statistics extends React.Component {
 
         return (
             <Cell className="statistics" col={12}>
-                <h3 className="underlined">{this.types[this.state.type_tab]} Statistics</h3>
-                <Tabs className="stats-type-tab" activeTab={this.state.type_tab} onChange={(tabId) => this.setState({ type_tab: tabId })}>
+                <h3 className="underlined">{this.types[type_tab]} Statistics</h3>
+                <Tabs className="stats-type-tab" activeTab={type_tab} onChange={(tabId) => this.setState({ type_tab: tabId })}>
                     <Tab>Monster</Tab>
                     <Tab>Areas</Tab>
                 </Tabs>
-                <Tabs className="stats-difficulty-tab" activeTab={this.state.difficulty_tab} onChange={(tabId) => this.setState({ difficulty_tab: tabId })}>
+                <Tabs className="stats-difficulty-tab" activeTab={difficulty_tab} onChange={(tabId) => this.setState({ difficulty_tab: tabId })}>
                     <Tab>Normal</Tab>
                     <Tab>Nightmare</Tab>
                     <Tab>Hell</Tab>
                 </Tabs>
                 <div className="statistics-box">
                     <div className="chart-picker">
-                        <IconToggle checked={this.state.chart_type === 'bar'} onChange={(e) => this.setChartType('bar')} ripple name="article" />
-                        <IconToggle checked={this.state.chart_type === 'radar'} onChange={(e) => this.setChartType('radar')} ripple name="radar" />
+                        <IconToggle checked={chart_type === 'bar'} onChange={(e) => this.setChartType('bar')} ripple name="article" />
+                        <IconToggle checked={chart_type === 'radar'} onChange={(e) => this.setChartType('radar')} ripple name="radar" />
                     </div>
 
                     {this.getChart(chart_type, difficulty_tab, type_tab)}
