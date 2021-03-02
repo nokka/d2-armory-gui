@@ -12,7 +12,7 @@ export default class Statistics extends React.Component {
         data: null,
         type_tab: 0,
         difficulty_tab: 0,
-        chart_type: null,
+        chart_type: null
     }
 
     difficulties = {
@@ -27,13 +27,13 @@ export default class Statistics extends React.Component {
     }
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
-            data: props.data,
             type_tab: 1,
-            difficulty_tab: 2,
+            data: props.data,
             chart_type: 'radar',
+            difficulty_tab: this.getDefaultDifficulty(props.level),
         };
     }
 
@@ -43,19 +43,33 @@ export default class Statistics extends React.Component {
         })
     }
 
+    getDefaultDifficulty(level) {
+        switch (true) {
+            case level <= 24:
+                return 0
+            case level > 24 && level < 60:
+                return 1
+            default:
+                return 2
+        }
+    }
+
+    getChart(chartType, difficultyTab, typeTab) {
+        let Chart = chartType === 'bar' ? Bar : Radar
+        return <Chart type={this.types[typeTab]} data={this.state.data[this.difficulties[difficultyTab]]} key={`${chartType}-${difficultyTab}-${typeTab}`} />
+    }
+
     render() {
-        console.log("DIFFICULTY")
-        console.log(this.difficulties[this.state.difficulty_tab])
-        console.log("TYPE")
-        console.log(this.types[this.state.type_tab])
+        let { chart_type, difficulty_tab, type_tab } = this.state
+
         return (
             <Cell className="statistics" col={12}>
-                <h3 className="underlined">Statistics</h3>
-                <Tabs className="stats-type-tab" activeTab={this.state.type_tab} onChange={(tabId) => this.setState({ type_tab: tabId })} ripple>
-                    <Tab>Unique monsters</Tab>
+                <h3 className="underlined">{this.types[this.state.type_tab]} Statistics</h3>
+                <Tabs className="stats-type-tab" activeTab={this.state.type_tab} onChange={(tabId) => this.setState({ type_tab: tabId })}>
+                    <Tab>Monster</Tab>
                     <Tab>Areas</Tab>
                 </Tabs>
-                <Tabs className="stats-difficulty-tab" activeTab={this.state.difficulty_tab} onChange={(tabId) => this.setState({ difficulty_tab: tabId })} ripple>
+                <Tabs className="stats-difficulty-tab" activeTab={this.state.difficulty_tab} onChange={(tabId) => this.setState({ difficulty_tab: tabId })}>
                     <Tab>Normal</Tab>
                     <Tab>Nightmare</Tab>
                     <Tab>Hell</Tab>
@@ -66,31 +80,7 @@ export default class Statistics extends React.Component {
                         <IconToggle checked={this.state.chart_type === 'radar'} onChange={(e) => this.setChartType('radar')} ripple name="radar" />
                     </div>
 
-                    {/* {this.state.chart_type === 'bar' && (
-                        <Bar data={this.state.data[this.difficulties[this.state.difficulty_tab]]} />
-                    )}
-                    {this.state.chart_type === 'radar' && (
-                        <Radar data={this.state.data[this.difficulties[this.state.difficulty_tab]]} />
-                    )} */}
-
-                    {this.state.difficulty_tab === 0 && this.state.chart_type === 'bar' && (
-                        <Bar data={this.state.data.normal} />
-                    )}
-                    {this.state.difficulty_tab === 0 && this.state.chart_type === 'radar' && (
-                        <Radar data={this.state.data.normal} />
-                    )}
-                    {this.state.difficulty_tab === 1 && this.state.chart_type === 'bar' && (
-                        <Bar data={this.state.data.nightmare} />
-                    )}
-                    {this.state.difficulty_tab === 1 && this.state.chart_type === 'radar' && (
-                        <Radar data={this.state.data.nightmare} />
-                    )}
-                    {this.state.difficulty_tab === 2 && this.state.chart_type === 'bar' && (
-                        <Bar type={'area'} data={this.state.data.hell} />
-                    )}
-                    {this.state.difficulty_tab === 2 && this.state.chart_type === 'radar' && (
-                        <Radar type={'area'} data={this.state.data.hell} />
-                    )}
+                    {this.getChart(chart_type, difficulty_tab, type_tab)}
                 </div>
             </Cell>
         );

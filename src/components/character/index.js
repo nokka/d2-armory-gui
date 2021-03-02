@@ -354,12 +354,12 @@ export default class Character extends React.Component {
             !this.state.statistics_error_occurred && (
               <div className="stats-msg">
                 <Spinner />
-                <h4>Loading character statistics</h4>
+                <h4>Loading statistics</h4>
               </div>
             )}
 
           {this.state.statistics !== null && (
-            <Statistics data={this.state.statistics} />
+            <Statistics level={this.state.header.level} data={this.state.statistics} />
           )}
 
           {this.state.statistics_error_occurred && (

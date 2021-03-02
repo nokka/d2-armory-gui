@@ -111,14 +111,14 @@ export default class GearBonuses extends React.Component {
                         null
                     }
                     {(this.state.bonuses.auras.length > 0) ?
-                        this.state.bonuses.auras.map((aura) =>
-                            <li key={`equipped-aura-${aura.name}`} className="aura">Level {aura.level} {aura.name} Aura When Equipped</li>
+                        this.state.bonuses.auras.map((aura, idx) =>
+                            < li key={`equipped-aura-${aura.name}-${idx}`} className="aura">Level {aura.level} {aura.name} Aura When Equipped</li>
                         )
                         :
                         null
                     }
                 </ul>
-            </Cell>
+            </Cell >
         );
     }
 };

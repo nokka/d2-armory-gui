@@ -20,9 +20,6 @@ export default class MercItems extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log("MERC PROPS")
-        console.log(props)
-
         var bonuses = {
             ias: 0,
             fcr: 0,

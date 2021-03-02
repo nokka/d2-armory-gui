@@ -11,7 +11,7 @@ export default class Bar extends React.Component {
     constructor(props) {
         super(props);
 
-        var data = {}
+        let data = {}
         switch (props.type) {
             case 'area':
                 data = this.buildAreaDataset(props.data.area)
@@ -29,15 +29,15 @@ export default class Bar extends React.Component {
     }
 
     buildMonsterDataset(data) {
-        var labels = [];
-        var points = [];
+        let labels = [];
+        let points = [];
 
         for (const [key, value] of Object.entries(data)) {
             labels.push(key);
             points.push(value);
         }
 
-        var dataset = {
+        let dataset = {
             labels: labels,
             datasets: [
                 {
@@ -114,9 +114,9 @@ export default class Bar extends React.Component {
     }
 
     buildAreaDataset(data) {
-        var labels = [];
-        var time = [];
-        var kills = [];
+        let labels = [];
+        let time = [];
+        let kills = [];
 
         for (const [area, value] of Object.entries(data)) {
             labels.push(area);
@@ -124,7 +124,7 @@ export default class Bar extends React.Component {
             kills.push(value.kills)
         }
 
-        var dataset = {
+        let dataset = {
             labels: labels,
             datasets: [
                 {
@@ -148,7 +148,6 @@ export default class Bar extends React.Component {
             ]
         };
 
-
         return {
             dataset: dataset,
             dataPoints: kills.length,
@@ -161,6 +160,13 @@ export default class Bar extends React.Component {
                         barPercentage: 0.5,
                         categoryPercentage: 0.5,
                         ticks: {
+                            callback: function (value) {
+                                if (value.length > 12) {
+                                    return value.substr(0, 12) + '...';
+                                } else {
+                                    return value
+                                }
+                            },
                             autoSkip: false,
                             fontfamily: "'Roboto'",
                             fontColor: "#a99877",

@@ -18,7 +18,10 @@
     }
 
     .stats-difficulty-tab{
-        margin-bottom: 15px;
+        margin: 15px 0px 15px 0px;
+        a {
+            font-size: 12px;
+        }
     }
 
     .stats-type-tab {

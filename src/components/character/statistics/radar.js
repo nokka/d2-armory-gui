@@ -11,7 +11,7 @@ export default class RadarStats extends React.Component {
     constructor(props) {
         super(props);
 
-        var data = {}
+        let data = {}
         switch (props.type) {
             case 'area':
                 data = this.buildAreaDataset(props.data.area)
@@ -28,15 +28,15 @@ export default class RadarStats extends React.Component {
     }
 
     buildMonsterDataset(data) {
-        var labels = [];
-        var points = [];
+        let labels = [];
+        let points = [];
 
         for (const [key, value] of Object.entries(data)) {
             labels.push(key);
             points.push(value);
         }
 
-        var dataset = {
+        let dataset = {
             labels: labels,
             datasets: [
                 {
@@ -58,9 +58,9 @@ export default class RadarStats extends React.Component {
     }
 
     buildAreaDataset(data) {
-        var labels = [];
-        var time = [];
-        var kills = [];
+        let labels = [];
+        let time = [];
+        let kills = [];
 
         for (const [area, value] of Object.entries(data)) {
             labels.push(area);
@@ -68,7 +68,7 @@ export default class RadarStats extends React.Component {
             kills.push(value.kills)
         }
 
-        var dataset = {
+        let dataset = {
             labels: labels,
             datasets: [
                 {
@@ -99,6 +99,14 @@ export default class RadarStats extends React.Component {
     }
 
     render() {
+        if (this.state.nrDataPoints === 0) {
+            return (
+                <div className="stats-msg">
+                    <h4>No data available</h4>
+                </div>
+            );
+        }
+
         return (
             <div>
                 <div className="total-kills">
