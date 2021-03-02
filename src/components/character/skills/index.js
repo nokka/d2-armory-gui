@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cell } from 'react-mdl'
-import {HorizontalBar} from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 import './style.css'
 
 export default class Skills extends React.Component {
@@ -15,7 +15,7 @@ export default class Skills extends React.Component {
         var labels = [];
         var points = [];
 
-        props.data.map(function(skill) {
+        props.data.map(function (skill) {
             labels.push(skill.name);
             points.push(skill.points);
             return true;
@@ -23,14 +23,14 @@ export default class Skills extends React.Component {
 
         var backgroundColors = [];
 
-        for(var i = 0; i < 30; i++) {
+        for (var i = 0; i < 30; i++) {
             backgroundColors.push('rgba(87, 147, 150, 0.7)');
         }
         var dataset = {
             labels: labels,
             datasets: [
                 {
-                    label: "Allocated points",
+                    label: "Points",
                     labelColor: "#ff0000",
                     backgroundColor: backgroundColors,
                     borderWidth: 0,
@@ -70,7 +70,10 @@ export default class Skills extends React.Component {
                                     }
                                 }]
                             },
-                            legend: {display: false}
+                            legend: { display: false },
+                            tooltips: {
+                                displayColors: false
+                            }
                         }}
                     />
                 </div>
