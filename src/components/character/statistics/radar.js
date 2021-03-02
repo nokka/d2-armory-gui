@@ -11,29 +11,36 @@ export default class RadarStats extends React.Component {
     constructor(props) {
         super(props);
 
+        var data = {}
+        switch (props.type) {
+            case 'area':
+                data = this.buildAreaDataset(props.data.area)
+                break
+            default:
+                data = this.buildMonsterDataset(props.data.special)
+        }
+
+        this.state = {
+            dataset: data.dataset,
+            total_kills: props.data.total_kills,
+            nrDataPoints: data.dataPoints
+        };
+    }
+
+    buildMonsterDataset(data) {
         var labels = [];
         var points = [];
 
-        if (props.data.champions > 0) {
-            labels.push("Champions")
-            points.push(props.data.champions)
-        }
-
-        if (props.data.uniques > 0) {
-            labels.push("Uniques")
-            points.push(props.data.uniques)
-        }
-
-        for (const [key, value] of Object.entries(props.data.special)) {
+        for (const [key, value] of Object.entries(data)) {
             labels.push(key);
             points.push(value);
         }
 
-        var data = {
+        var dataset = {
             labels: labels,
             datasets: [
                 {
-                    label: '',
+                    label: 'Kills',
                     backgroundColor: 'rgba(255, 99, 132, 0.1)',
                     borderColor: 'rgba(255, 99, 132, 0.5)',
                     borderWidth: 1,
@@ -44,10 +51,51 @@ export default class RadarStats extends React.Component {
             ]
         };
 
-        this.state = {
-            dataset: data,
-            total_kills: props.data.total_kills
+        return {
+            dataset: dataset,
+            dataPoints: points.length
+        }
+    }
+
+    buildAreaDataset(data) {
+        var labels = [];
+        var time = [];
+        var kills = [];
+
+        for (const [area, value] of Object.entries(data)) {
+            labels.push(area);
+            time.push(value.time)
+            kills.push(value.kills)
+        }
+
+        var dataset = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Seconds',
+                    backgroundColor: 'rgba(102, 255, 97, 0.1)',
+                    borderColor: 'rgba(102, 255, 97, 0.8)',
+                    borderWidth: 1,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgba(102, 255, 97, 0.8)',
+                    data: time,
+                },
+                {
+                    label: 'Kills',
+                    backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                    borderColor: 'rgba(255, 99, 132, 0.5)',
+                    borderWidth: 1,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgba(255,99,132,0.8)',
+                    data: kills,
+                },
+            ]
         };
+
+        return {
+            dataset: dataset,
+            dataPoints: kills.length
+        }
     }
 
     render() {
@@ -60,10 +108,6 @@ export default class RadarStats extends React.Component {
                     <Radar
                         data={this.state.dataset}
                         options={{
-                            title: {
-                                display: false,
-                            },
-                            legend: { display: false },
                             scale: {
                                 gridLines: {
                                     display: true,
@@ -77,15 +121,7 @@ export default class RadarStats extends React.Component {
                                 },
                             },
                             tooltips: {
-                                displayColors: false,
-                                callbacks: {
-                                    label: function (tooltipItem, data) {
-                                        return tooltipItem.yLabel;
-                                    },
-                                    title: function (tooltipItem, data) {
-                                        return;
-                                    }
-                                }
+                                displayColors: false
                             }
                         }}
                     />

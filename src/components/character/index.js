@@ -382,7 +382,7 @@ export default class Character extends React.Component {
         </Grid>
         {this.state.merc_items !== null && (
           <Grid className="character-sheet merc">
-            <Merc data={this.state.merc_items} />
+            <Merc type={this.state.header.merc_type} name={this.state.header.merc_name_id} data={this.state.merc_items} />
           </Grid>
         )}
         {this.state.golem_item !== null && (

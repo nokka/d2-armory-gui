@@ -20,10 +20,38 @@
     position: relative;
 }
 
-.merc-items .char-name {
-    margin-top: 24px;
-    margin-bottom: 24px;
+.merc-text {
+    text-align: center;
+    line-height: 20px;
+    margin: 0px;
 }
+
+.merc-items .merc-name {
+    margin-top: 15px;
+    line-height: 1.35;
+}
+
+.merc-attributes {
+    color: #a99877;
+}
+.merc-items .merc-type {
+    font-size: 14px;
+    color: #d6b665;
+}
+
+.merc-items .merc-aura {
+    font-size: 14px;
+    color: #a99fff;
+    margin: 8px 0px 8px 0px;
+}
+
+.merc-items .merc-attributes {
+    font-family: "Roboto", sans-serif;
+    margin: 0px;
+    font-size: 12px;
+    text-align: center;
+}
+
 
 .merc-bonuses ul {
     margin: 0px;

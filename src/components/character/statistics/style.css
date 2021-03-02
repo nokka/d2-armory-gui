@@ -17,8 +17,22 @@
         margin-bottom: 0px;
     }
 
-    .statistics-tab{
+    .stats-difficulty-tab{
         margin-bottom: 15px;
+    }
+
+    .stats-type-tab {
+        position: absolute;
+        top: 19px;
+        right: 0px;
+        width: auto;
+
+        .mdl-tabs__tab, .mdl-tabs__tab.is-active {
+            background: none !important;
+        }
+        a {
+            font-size: 12px;
+        }
     }
 
     .total-kills {
