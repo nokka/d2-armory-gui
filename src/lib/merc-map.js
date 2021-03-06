@@ -1,156 +1,156 @@
 module.exports = {
     data: {
         0: {
-            name: "RogueScoutFireNormal",
+            name: "Rogue Scout (Normal)",
             attributes: "Fire Arrow",
             type: "rogue"
         },
         1: {
-            name: "RogueScoutIceNormal",
+            name: "Rogue Scout (Normal)",
             attributes: "Cold Arrow",
             type: "rogue"
         },
         2: {
-            name: "RogueScoutFireNightmare",
+            name: "Rogue Scout (Nightmare)",
             attributes: "Fire Arrow",
             type: "rogue"
         },
         3: {
-            name: "RogueScoutIceNightmare",
+            name: "Rogue Scout (Nightmare)",
             attributes: "Cold Arrow",
             type: "rogue"
         },
         4: {
-            name: "RogueScoutFireHell",
+            name: "Rogue Scout (Hell)",
             attributes: "Fire Arrow",
             type: "rogue"
         },
         5: {
-            name: "RogueScoutIceHell",
+            name: "Rogue Scout (Hell)",
             attributes: "Cold Arrow",
             type: "rogue"
         },
         6: {
-            name: "DesertMercenaryCombNormal",
+            name: "Desert Mercenary (Normal)",
             attributes: "Combat",
             aura: "Prayer aura",
             type: "desert"
         },
         7: {
-            name: "DesertMercenaryDefNormal",
+            name: "Desert Mercenary (Normal)",
             attributes: "Defensive",
             aura: "Defiance aura",
             type: "desert"
         },
         8: {
-            name: "DesertMercenaryOffNormal",
+            name: "Desert Mercenary (Normal)",
             attributes: "Offensive",
             aura: "Blessed aim aura",
             type: "desert"
         },
         9: {
-            name: "DesertMercenaryCombNightmare",
+            name: "Desert Mercenary (Nightmare)",
             attributes: "Combat",
             aura: "Thorns aura",
             type: "desert"
         },
         10: {
-            name: "DesertMercenaryDefNightmare",
+            name: "Desert Mercenary (Nightmare)",
             attributes: "Defensive",
             aura: "Holy Freeze aura",
             type: "desert"
         },
         11: {
-            name: "Desert Mercenary (NM)",
+            name: "Desert Mercenary (Nightmare)",
             attributes: "Offensive",
             aura: "Might aura",
             type: "desert"
         },
         12: {
-            name: "DesertMercenaryCombHell",
+            name: "Desert Mercenary (Hell)",
             attributes: "Combat",
             aura: "Prayer aura",
             type: "desert"
         },
         13: {
-            name: "DesertMercenaryDefHell",
+            name: "Desert Mercenary (Hell)",
             attributes: "Defensive",
             aura: "Defiance aura",
             type: "desert"
         },
         14: {
-            name: "DesertMercenaryOffHell",
+            name: "Desert Mercenary (Hell)",
             attributes: "Offensive",
             aura: "Blessed aim aura",
             type: "desert"
         },
         15: {
-            name: "EasternSorcerorFireNormal",
+            name: "Eastern Sorceror (Normal)",
             attributes: "Fire",
             type: "eastern"
         },
         16: {
-            name: "EasternSorcerorColdNormal",
+            name: "Eastern Sorceror (Normal)",
             attributes: "Cold",
             type: "eastern"
         },
         17: {
-            name: "EasternSorcerorLtngNormal",
+            name: "Eastern Sorceror (Normal)",
             attributes: "Lightning",
             type: "eastern"
         },
         18: {
-            name: "EasternSorcerorFireNightmare",
+            name: "Eastern Sorceror (Nightmare)",
             attributes: "Fire",
             type: "eastern"
         },
         19: {
-            name: "EasternSorcerorColdNightmare",
+            name: "Eastern Sorceror (Nightmare)",
             attributes: "Cold",
             type: "eastern"
         },
         20: {
-            name: "EasternSorcerorLtngNightmare",
+            name: "Eastern Sorceror (Nightmare)",
             attributes: "Lightning",
             type: "eastern"
         },
         21: {
-            name: "EasternSorcerorFireHell",
+            name: "Eastern Sorceror (Hell)",
             attributes: "Fire",
             type: "eastern"
         },
         22: {
-            name: "EasternSorcerorColdHell",
+            name: "Eastern Sorceror (Hell)",
             attributes: "Cold",
             type: "eastern"
         },
         23: {
-            name: "EasternSorcerorLtngHell",
+            name: "Eastern Sorceror (Hell)",
             attributes: "Lightning",
             type: "eastern"
         },
         24: {
-            attributes: "BarbarianNormal",
+            name: "Barbarian (Normal)",
             type: "barbarian"
         },
         25: {
-            attributes: "BarbarianNormal2",
+            name: "Barbarian (Normal)",
             type: "barbarian"
         },
         26: {
-            attributes: "BarbarianNightmare",
+            name: "Barbarian (Nightmare)",
             type: "barbarian"
         },
         27: {
-            attributes: "BarbarianNightmare2",
+            name: "Barbarian (Nightmare)",
             type: "barbarian"
         },
         28: {
-            attributes: "BarbarianHell",
+            name: "Barbarian (Hell)",
             type: "barbarian"
         },
         29: {
-            attributes: "BarbarianHell2",
+            name: "Barbarian (Hell)",
             type: "barbarian"
         }
     },

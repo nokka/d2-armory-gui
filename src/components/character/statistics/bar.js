@@ -32,9 +32,11 @@ export default class Bar extends React.Component {
         let labels = [];
         let points = [];
 
-        for (const [key, value] of Object.entries(data)) {
-            labels.push(key);
-            points.push(value);
+        if (data !== null) {
+            for (const [key, value] of Object.entries(data)) {
+                labels.push(key);
+                points.push(value);
+            }
         }
 
         let dataset = {

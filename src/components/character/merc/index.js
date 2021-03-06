@@ -128,7 +128,10 @@ export default class MercItems extends React.Component {
                         <h1 className="merc-text merc-name">{this.state.name}</h1>
                     )}
                     <h3 className="merc-text merc-type">{this.state.data.name}</h3>
-                    <p className="merc-text merc-attributes">({this.state.data.attributes})</p>
+
+                    {this.state.data.attributes !== undefined && (
+                        <p className="merc-text merc-attributes">({this.state.data.attributes})</p>
+                    )}
                     {this.state.data.aura !== undefined && (
                         <h3 className="merc-text merc-aura">{this.state.data.aura}</h3>
                     )}

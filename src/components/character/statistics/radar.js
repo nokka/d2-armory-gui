@@ -62,10 +62,12 @@ export default class RadarStats extends React.Component {
         let time = [];
         let kills = [];
 
-        for (const [area, value] of Object.entries(data)) {
-            labels.push(area);
-            time.push(value.time)
-            kills.push(value.kills)
+        if (data !== null) {
+            for (const [area, value] of Object.entries(data)) {
+                labels.push(area);
+                time.push(value.time)
+                kills.push(value.kills)
+            }
         }
 
         let dataset = {
