@@ -138,9 +138,9 @@ export default class RadarStats extends React.Component {
                                     callback: function () { return "" }
                                 },
                             },
-                            // tooltips: {
-                            //     displayColors: false
-                            // }
+                            tooltips: {
+                                displayColors: false
+                            }
                         }}
                     />
                 </div>
