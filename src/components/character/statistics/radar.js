@@ -123,11 +123,11 @@ export default class RadarStats extends React.Component {
                                     display: true,
                                     color: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo']
                                 },
-                                // ticks: {
-                                //     beginAtZero: true,
-                                //     backdropColor: "rgba(0, 0, 0, 0)",
-                                //     callback: function () { return "" }
-                                // },
+                                ticks: {
+                                    beginAtZero: true,
+                                    backdropColor: "rgba(0, 0, 0, 0)",
+                                    callback: function () { return "" }
+                                },
                             },
                             // tooltips: {
                             //     displayColors: false
