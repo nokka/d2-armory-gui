@@ -122,30 +122,18 @@ export default class RadarStats extends React.Component {
                                 gridLines: {
                                     display: true,
                                     color: [
-                                        'black',
-                                        'red',
-                                        'orange',
-                                        'yellow',
-                                        'green',
-                                        'blue',
-                                        'indigo',
-                                        'violet'
+                                        '#121F20'
                                     ]
-                                    // color: [
-                                    //     'rgba(87, 147, 150, 0.1)'
-                                    // ]
                                 },
                                 ticks: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    backdropColor: "rgba(0, 0, 0, 0)",
+                                    callback: function () { return "" }
                                 },
-                                // ticks: {
-                                //     backdropColor: "rgba(0, 0, 0, 0)",
-                                //     callback: function () { return "" }
-                                // },
                             },
-                            // tooltips: {
-                            //     displayColors: false
-                            // }
+                            tooltips: {
+                                displayColors: false
+                            }
                         }}
                     />
                 </div>
