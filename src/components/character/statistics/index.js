@@ -70,7 +70,7 @@ export default class Statistics extends React.Component {
             <Cell className="statistics" col={12}>
                 <h3 className="underlined">{this.types[type_tab]} Statistics</h3>
                 <Tabs className="stats-type-tab" activeTab={type_tab} onChange={(tabId) => this.setState({ type_tab: tabId })}>
-                    <Tab>Monster</Tab>
+                    <Tab>Monsters</Tab>
                     <Tab>Areas</Tab>
                 </Tabs>
                 <Tabs className="stats-difficulty-tab" activeTab={difficulty_tab} onChange={(tabId) => this.setState({ difficulty_tab: tabId })}>

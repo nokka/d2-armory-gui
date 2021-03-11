@@ -216,6 +216,7 @@ export default class Bar extends React.Component {
                 <div>
                     <HorizontalBar data={this.state.dataset} options={this.state.options} />
                 </div>
+                <p><i>(The chart displays the top 8 data points)</i></p>
             </div>
         );
     }

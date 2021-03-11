@@ -18,6 +18,18 @@
     min-height: 250px;
     float: right;
     position: relative;
+
+    .item.location-1, .item-backdrop.location-1 {
+        left: 162px;
+    }
+
+    .item.location-3, .item-backdrop.location-3 {
+        left: 162px;
+    }
+
+    .item.location-5, .item-backdrop.location-5 {
+        left: 268px;
+    }
 }
 
 .merc-text {

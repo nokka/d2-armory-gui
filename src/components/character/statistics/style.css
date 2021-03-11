@@ -16,6 +16,13 @@
     .underlined {
         margin-bottom: 0px;
     }
+    
+    p {
+        margin-top: 25px;
+        font-size: 10px;
+        color: #616161;
+        text-align: center;
+    }
 
     .stats-difficulty-tab{
         margin: 15px 0px 15px 0px;

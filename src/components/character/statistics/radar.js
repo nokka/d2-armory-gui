@@ -126,6 +126,7 @@ export default class RadarStats extends React.Component {
                                     ]
                                 },
                                 ticks: {
+                                    beginAtZero: true,
                                     backdropColor: "rgba(0, 0, 0, 0)",
                                     callback: function () { return "" }
                                 },
@@ -136,6 +137,7 @@ export default class RadarStats extends React.Component {
                         }}
                     />
                 </div>
+                <p><i>(The chart displays the top 8 data points)</i></p>
             </div>
         );
     }
