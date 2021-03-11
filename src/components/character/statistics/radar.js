@@ -122,6 +122,7 @@ export default class RadarStats extends React.Component {
                                 gridLines: {
                                     display: true,
                                     color: [
+                                        '#121F20',
                                         '#121F20'
                                     ]
                                 },
