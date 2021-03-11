@@ -121,7 +121,16 @@ export default class RadarStats extends React.Component {
                             scale: {
                                 gridLines: {
                                     display: true,
-                                    color: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo']
+                                    color: [
+                                        '#121F20',
+                                        '#121F20',
+                                        '#121F20',
+                                        '#121F20',
+                                        '#121F20',
+                                        '#121F20',
+                                        '#121F20',
+                                        '#121F20'
+                                    ]
                                 },
                                 ticks: {
                                     beginAtZero: true,
