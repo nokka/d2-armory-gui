@@ -144,6 +144,7 @@ export default class RadarStats extends React.Component {
                         }}
                     />
                 </div>
+                <p><i>(The chart displays the top 8 data points)</i></p>
             </div>
         );
     }
