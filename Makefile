@@ -6,6 +6,9 @@ VALID_TAG=$(shell echo $(TAG_NAME) | sed 's/[^a-z0-9_\.-]/-/g')
 docker/local:
 	docker build -f Dockerfile -t d2-armory-gui:local .
 
+docker/run:
+	docker run -p 9001:80 d2-armory-gui:local
+
 # Builds docker image with the Github container registry commit tag.
 docker/build:
 	docker build -f Dockerfile -t $(GHCR_COMMIT_TAG) .
