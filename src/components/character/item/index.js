@@ -110,7 +110,6 @@ export default class Item extends React.Component {
     }
 
     getStandardAttributes() {
-
         // Check for enhancers that will alter the defense or weapon
         var enhancers = DisplayCalculator.calculate(this.state.mergedAttributes);
 
@@ -180,7 +179,6 @@ export default class Item extends React.Component {
     }
 
     getMagicAttributes() {
-
         return (
             <div>
             { (this.state.mergedAttributes.length > 0) ?
@@ -294,7 +292,7 @@ export default class Item extends React.Component {
 
     getRuneNames() {
         var names = "";
-        if(this.state.item.nr_of_items_in_sockets > 0) {
+        if(this.state.item.nr_of_items_in_sockets > 0 && this.state.item.socketed_items !== null) {
             this.state.item.socketed_items.map(function(item) {
                 var match = item.type.match(/r[0-9]/g);
                 if(match !== null) {
@@ -314,7 +312,6 @@ export default class Item extends React.Component {
     }
 
     renderTooltip() {
-
         var title = this.getTitle();
         var runeNames = this.getRuneNames();
         var standardAttributes = this.getStandardAttributes();
@@ -358,7 +355,7 @@ export default class Item extends React.Component {
                     <span className="helper"></span>
                     <div className={`item-image`}>
                         <img className={`ethereal-${item.ethereal}`} src={`${process.env.PUBLIC_URL}/assets/items/${itemImage}.png`} role="presentation"/>
-                        { (item.nr_of_items_in_sockets > 0) ?
+                        { (item.nr_of_items_in_sockets > 0 && item.socketed_items !== null) ?
                                 <div className={`socketed-items sockets-${item.nr_of_items_in_sockets}`}>
                                 {item.socketed_items.map((socketedItem, i) =>
                                     <SocketedItem key={`${item.id}_${i}}`} data={{item: socketedItem, position: i}}/>
@@ -367,7 +364,6 @@ export default class Item extends React.Component {
                             :
                             null
                         }
-
                     </div>
                 </div>
             </Tooltip>
