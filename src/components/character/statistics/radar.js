@@ -1,5 +1,6 @@
 import React from 'react'
 import { Radar } from 'react-chartjs-2';
+import TotalKills from "./total-kills";
 
 export default class RadarStats extends React.Component {
 
@@ -16,6 +17,12 @@ export default class RadarStats extends React.Component {
             case 'area':
                 data = this.buildAreaDataset(props.data.area)
                 break
+            case 'elites':
+                data = this.buildEliteDataset(props.data.area)
+                break
+            case 'efficiency':
+                data = this.buildEfficiencyDataset(props.data.area)
+                break
             default:
                 data = this.buildMonsterDataset(props.data.special)
         }
@@ -23,6 +30,8 @@ export default class RadarStats extends React.Component {
         this.state = {
             dataset: data.dataset,
             total_kills: props.data.total_kills,
+            total_unique_kills: props.data.total_unique_kills,
+            total_champ_kills: props.data.total_champ_kills,
             nrDataPoints: data.dataPoints
         };
     }
@@ -100,6 +109,96 @@ export default class RadarStats extends React.Component {
         }
     }
 
+    buildEliteDataset(data) {
+        let labels = [];
+        let uniques = [];
+        let champs = [];
+
+        if (data !== null) {
+            for (const [area, value] of Object.entries(data)) {
+                labels.push(area);
+                uniques.push(value.uniquekills)
+                champs.push(value.champkills)
+            }
+        }
+
+        let dataset = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Elite kills',
+                    backgroundColor: 'rgba(169, 152, 119, 0.3)',
+                    borderColor: 'rgba(169, 152, 119, 1.0)',
+                    borderWidth: 1,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgba(169, 152, 119, 0.9)',
+                    data: uniques,
+                },
+                {
+                    label: 'Champion kills',
+                    backgroundColor: 'rgba(80, 79, 167, 0.3)',
+                    borderColor: 'rgba(80, 79, 167, 1.0)',
+                    borderWidth: 1,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgba(80, 79, 167, 0.9)',
+                    data: champs,
+                },
+            ]
+        };
+
+        return {
+            dataset: dataset,
+            dataPoints: uniques.length
+        }
+    }
+
+    buildEfficiencyDataset(data) {
+        let labels = [];
+        let uniques = [];
+        let champs = [];
+
+        if (data !== null) {
+            for (const [area, value] of Object.entries(data)) {
+                labels.push(area);
+                
+                let minutes = value.time / 60
+
+                uniques.push((value.uniquekills/minutes).toFixed(3))
+                champs.push((value.champkills/minutes).toFixed(3))
+            }
+        }
+
+        let dataset = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Elites per minute',
+                    backgroundColor: 'rgba(169, 152, 119, 0.3)',
+                    borderColor: 'rgba(169, 152, 119, 1.0)',
+                    borderWidth: 1,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgba(169, 152, 119, 0.9)',
+                    data: uniques,
+                },
+                {
+                    label: 'Champions per minute',
+                    backgroundColor: 'rgba(80, 79, 167, 0.3)',
+                    borderColor: 'rgba(80, 79, 167, 1.0)',
+                    borderWidth: 1,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgba(80, 79, 167, 0.9)',
+                    data: champs,
+                },
+            ]
+        };
+
+        return {
+            dataset: dataset,
+            dataPoints: uniques.length
+        }
+    }
+
+
     render() {
         if (this.state.nrDataPoints === 0) {
             return (
@@ -111,9 +210,12 @@ export default class RadarStats extends React.Component {
 
         return (
             <div>
-                <div className="total-kills">
-                    <h3>Total kills: {this.state.total_kills}</h3>
-                </div>
+                
+                <TotalKills
+                    total_kills={this.state.total_kills}
+                    total_unique_kills={this.state.total_unique_kills}
+                    total_champ_kills={this.state.total_champ_kills}
+                />
                 <div>
                     <Radar
                         data={this.state.dataset}

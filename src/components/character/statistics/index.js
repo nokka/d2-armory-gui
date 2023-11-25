@@ -22,15 +22,17 @@ export default class Statistics extends React.Component {
     }
 
     types = {
-        0: 'monsters',
-        1: 'area'
+        0: 'area',
+        1: 'elites',
+        2: 'efficiency',
+        3: 'specials',
     }
 
     constructor(props) {
         super(props)
 
         this.state = {
-            type_tab: 1,
+            type_tab: 0,
             data: props.data,
             chart_type: 'radar',
             difficulty_tab: this.getDefaultDifficulty(props.level),
@@ -68,10 +70,12 @@ export default class Statistics extends React.Component {
 
         return (
             <Cell className="statistics" col={12}>
-                <h3 className="underlined">{this.types[type_tab]} Statistics</h3>
+                <h3 className="underlined statistics-head">{this.types[type_tab]} Statistics</h3>
                 <Tabs className="stats-type-tab" activeTab={type_tab} onChange={(tabId) => this.setState({ type_tab: tabId })}>
-                    <Tab>Monsters</Tab>
                     <Tab>Areas</Tab>
+                    <Tab>Elites</Tab>
+                    <Tab>Kill Efficiency</Tab>
+                    <Tab>Specials</Tab>
                 </Tabs>
                 <Tabs className="stats-difficulty-tab" activeTab={difficulty_tab} onChange={(tabId) => this.setState({ difficulty_tab: tabId })}>
                     <Tab>Normal</Tab>
